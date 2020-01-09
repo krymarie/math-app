@@ -52,5 +52,17 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "description": "- [Git Hub Repo](https://github.com/krymarie \"Krystal's 28+ green squares\")",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maurina/math-app.git"
+  },
+  "author": "Maurina Davis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maurina/math-app/issues"
+  },
+  "homepage": "https://github.com/Maurina/math-app#readme"
 }

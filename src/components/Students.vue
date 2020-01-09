@@ -14,7 +14,7 @@
                     </v-card-text>
                   </v-card>
                 </v-flex>
-            </v-layout>
+            </v-layout>npm
           </v-flex>
           <v-flex xs12="xs12">
             <v-card>
