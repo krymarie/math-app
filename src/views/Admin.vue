@@ -89,8 +89,8 @@ possibly combine them just to get it built then work on breaking it up again -->
 </template>
 
 <script>
-import CRM from './components/CRM';
-import LogInModal from './components/LogInModal';
+import CRM from '../components/CRM';
+import LogInModal from '../components/LogInModal';
 import Vue from 'vue';//check this since i moved everything around
 // import Router from 'vue-router'; //follow max on this
 // import store from '../store';//add this

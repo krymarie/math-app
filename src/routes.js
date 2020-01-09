@@ -18,7 +18,9 @@ export const routes = [
         component: Home
     },
     {
-        path:'/Admin',
+        path:'/admin',
         component: Admin
-    }
+    },
+  
 ]
+
