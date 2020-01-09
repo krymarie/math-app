@@ -13,7 +13,7 @@ export default {
   components: {
     'app-login' : login,
   },
-  
+
   data: () => ({
        
   }),
