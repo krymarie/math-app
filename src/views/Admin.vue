@@ -1,7 +1,7 @@
 <template>
 <!-- Broke out the top and side nav wrong my errors aren't css but vutify
 possibly combine them just to get it built then work on breaking it up again -->
-  <v-app light="light" app>
+  <div>
 
     
     <!-- Import Log In Modal Here -->
@@ -85,7 +85,7 @@ possibly combine them just to get it built then work on breaking it up again -->
       <CRM/>
     </v-content>
 <!-- @endif -->
-  </v-app>
+  </div>
 </template>
 
 <script>
