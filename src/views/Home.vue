@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="border">
       <h1> Home </h1>
       <app-login></app-login>
   </div>
@@ -21,5 +21,11 @@ export default {
 </script>
 
 <style scoped>
-
+.border{
+  width:1000px;
+  height: 100%;
+}
+h1{
+  text-align: center;
+}
 </style>
