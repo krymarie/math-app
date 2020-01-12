@@ -1,7 +1,6 @@
 # math-app
 
-# For future professors review
-# - Renders large lists of users that can be searched or sorted asc desc
+# For future developers
 
 # Links here to help them see where we did all sorts of awesomeness
 - [Git Hub Repo](https://https://github.com/krymarie/math-app "Math App")
