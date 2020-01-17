@@ -67,7 +67,7 @@
             ></v-text-field>
               <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit" :disabled="$v.$invalid" >Get Started</v-btn>
 
-              <h3 class="headline">  Already have an account? <v-btn text color="primary">Login</v-btn> </h3>
+              <h3 class="headline">  Already have an account? <v-btn text color="primary"  type="submit">Login</v-btn> </h3>
                 
                 
             </v-row>
@@ -114,6 +114,9 @@ import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
        email:{
          required,
          email,
+         unique: value =>{
+
+         }
        },
        password: {
          required,

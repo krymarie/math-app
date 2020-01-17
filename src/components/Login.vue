@@ -51,11 +51,45 @@
             counter
             @click:append="show = !show"
           ></v-text-field>
-          
-              <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit" :disabled="$v.$invalid" >Login</v-btn>
-
             
-                
+            <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit" :disabled="$v.$invalid" >Login</v-btn>
+              
+                <h3 class="headline"> 
+                  <v-btn
+                  text
+                    color="primary"
+                          dark
+                          @click="dialog2 = true"
+                  > 
+                   Forgot Password
+                  </v-btn> 
+                </h3>
+                <v-dialog
+                  v-model="dialog2"
+                  max-width="500px"
+                    >
+                    <v-card>
+                         <v-btn color="#6d6e71"   text @click="dialog2 = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>
+                      <v-card-title class="headline" >
+                        Recover Password
+                      </v-card-title>
+                    <v-card-text>
+                      <p class="recovery"> Please enter the email you used when creating an account.</p>
+                  <p class="recovery">We will send you an email with a link to a page where you can create a new password. </p>
+                      <v-text-field
+                      class="infomation" 
+                      @blur="$v.recoverEmail.$touch()"
+                      v-model.lazy="recoverEmail"
+                      :rules="recoverEmail"
+                      label="E-mail"
+                      required
+                      type="email"
+                    ></v-text-field>
+                     <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit"  >Recover Password</v-btn>
+                  </v-card-text>
+         
+          </v-card>
+        </v-dialog>
                 
             </v-row>
           </v-container>
@@ -81,6 +115,7 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
       show1: '',
       show: '',
       dialog: false,
+      dialog2: false,
       email: '',
       emailRules: [
         v => !!v || 'E-mail is required',
@@ -93,6 +128,12 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
         min: v => v.length >= 8 || 'Min 8 characters',
         emailMatch: () => ('The email and password you entered don\'t match'),
       },
+
+      recoverEmail: '',
+      recoverEmailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+/.test(v) || 'E-mail must be valid',
+      ],
    
     }),
      validations: {
@@ -184,4 +225,11 @@ p {
 h4{
   margin: 2% 0;
 }
+
+.recovery {
+  text-align: start;
+  margin-top: 4%;
+}
+
+
 </style>
