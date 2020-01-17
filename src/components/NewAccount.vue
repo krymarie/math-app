@@ -3,7 +3,7 @@
   
     <v-dialog v-model="dialog" persistent max-width="80%" overlay-opacity=".85">
       <template v-slot:activator="{ on }">
-        <v-btn  color="#1b74bcff"  dark rounded v-on="on">Login</v-btn>
+        <v-btn  color="#a61d36ff"  dark rounded v-on="on">Create Free Account</v-btn>
       </template>
      <!--  <div class="close">
        <v-btn color="#fff" text @click="dialog = false"> <v-icon>fas fa-times</v-icon></v-btn>
@@ -18,7 +18,9 @@
           src="/assets/images/FLC-Logo-Large-2b.png"
         ></v-img>
         </div>
-     
+        <v-card-title>
+          <h3 class="headline">Create an account</h3>
+        </v-card-title>
         <v-card-text>
           <v-container class="containerLayout">
             <v-row>
@@ -51,10 +53,21 @@
             counter
             @click:append="show = !show"
           ></v-text-field>
-          
-              <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit" :disabled="$v.$invalid" >Login</v-btn>
+           <v-text-field            
+              v-model="confirmPassword"
+              @blur="$v.confirmPassword.$touch()"
+              :append-icon="show1 ? 'visibility' : 'visibility_off'"
+              :rules="[rules.required, rules.min]"
+              :type="show1 ? 'text' : 'password'"
+              name="input-10-1"
+              label="Re-enter Password"
+              hint="Password must match"
+              counter
+              @click:append="show1 = !show1"
+            ></v-text-field>
+              <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit" :disabled="$v.$invalid" >Get Started</v-btn>
 
-            
+              <h3 class="headline">  Already have an account? <v-btn text color="primary">Login</v-btn> </h3>
                 
                 
             </v-row>
@@ -75,7 +88,7 @@
 
 
 <script>
-import { required, minLength, email, } from 'vuelidate/lib/validators'
+import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
   export default {
     data: () => ({
       show1: '',
@@ -93,7 +106,9 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
         min: v => v.length >= 8 || 'Min 8 characters',
         emailMatch: () => ('The email and password you entered don\'t match'),
       },
-   
+      confirmPassword: '',
+       required: value => !!value || 'Required.',
+        min: v => v.length >= 8 || 'Password must match',
     }),
      validations: {
        email:{
@@ -104,7 +119,10 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
          required,
          minLength: minLength(8)
        },
-      
+       confirmPassword: {
+         required,
+        sameAs: sameAs('password')
+       }
    }
  }
 
@@ -129,7 +147,7 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
 .layout{
   display: flex;
   justify-content: center;
-
+  margin: -5% 0 -2% 0;
 }
 
 .logo{
@@ -154,7 +172,7 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
 .facebook{
   display: flex;
   justify-content:space-between;
-  margin: 0 0 8% 0;
+  margin: 0 0 4% 0;
 }
 
 .iconFacebook{
@@ -162,8 +180,8 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
 } 
 
 .started{
-  margin-top:8%;
-  margin-bottom: 8%;
+  margin-top:6%;
+  margin-bottom: 5%;
   color: #fff;
 }
 
