@@ -2,7 +2,7 @@
   <v-container>
     
     <Header/>
-    <h1 style="font-size: 40px; margin-top: 40px">Who's Learning?</h1>
+    <h1 style="font-size: 40px; margin-top: 40px">Who's Learning Now?</h1>
       
       <v-container>
         <v-layout>
