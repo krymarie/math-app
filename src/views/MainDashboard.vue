@@ -1,12 +1,8 @@
 <template>
   <v-container>
-      <v-img
-        class="logo"
-        src="/assets/images/FLC-Logo-Large-2b.png"
-        style="width: 100px"
-      />
-      <app-login style="padding-right: 10px" />
-      <h1 style="font-size: 40px; margin-top: 40px">Who's Learning?</h1>
+    
+    <Header/>
+    <h1 style="font-size: 40px; margin-top: 40px">Who's Learning?</h1>
       
       <v-container>
         <v-layout>
@@ -69,12 +65,12 @@
 </template>
 
 <script>
-import login from '../components/Login'
+import Header from '../components/Header' 
 
 export default {
   name: 'App',
   components: {
-    'app-login' : login
+    Header
   },
 
   data: () => ({
@@ -83,25 +79,25 @@ export default {
 }
 </script>
 
-<style scoped>
-.border{
-  width:1000px;
-  height: 100%;
-}
-h1{
-  text-align: center;
-}
-.studentCard {
-    margin: 10px;
-}
-.addStudent {
-    opacity: 0.3;
-}
-.studentAvatar {
-    background-color: lightgray;
-}
-.avatarImage {
-    max-width: 100px;
-    max-height: 120px;
-}
+<style lang="sass" scoped>
+.border
+  width:1000px
+  height: 100%
+
+h1
+  text-align: center
+
+.studentCard
+    margin: 10px
+
+.addStudent
+    opacity: 0.3
+
+.studentAvatar
+    background-color: lightgray
+
+.avatarImage
+    max-width: 100px
+    max-height: 120px
+
 </style>

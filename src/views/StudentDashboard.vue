@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header/>
     <v-header>  
       <LogInModal/>
     </v-header>
@@ -37,6 +38,7 @@
 import CRM from '../components/CRM';
 import LogInModal from '../components/LogInModal';
 import Vue from 'vue';//check this since i moved everything around
+import Header from '../components/Header'
 
 export default {
   name: 'App',
@@ -59,7 +61,8 @@ export default {
   },
   
   components: {
-    LogInModal
+    LogInModal,
+    Header
   },
 };
 </script>

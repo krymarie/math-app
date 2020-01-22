@@ -1,11 +1,11 @@
 <template>
-  <v-img
+<v-container class="header">
+  <img
     class="logo"
     src="/assets/images/FLC-Logo-Large-2b.png"
-    style="width: 100px"
   />
-  <app-login style="padding-right: 10px" />
-  <h1 style="font-size: 40px; margin-top: 40px">Who's Learning?</h1>
+  <app-login class="login"/>
+  </v-container>
 </template>
 
 
@@ -22,8 +22,16 @@ import login from '../components/Login'
   }
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
 
+.header
+  display: flex
 
+  .logo
+    height: autos
+    width: 110px
+  .login
+    padding-right: 10px
+    padding-top: 20px
 
 </style>

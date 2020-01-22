@@ -1,11 +1,7 @@
 <template>
-<!-- Broke out the top and side nav wrong my errors aren't css but vutify
-possibly combine them just to get it built then work on breaking it up again -->
   <div>
 
-    
-    <!-- Import Log In Modal Here -->
-    <!-- <v-if="logIn = false"> -->
+    <Header />
     <v-content>  
       <LogInModal/>
     </v-content>
@@ -91,22 +87,8 @@ possibly combine them just to get it built then work on breaking it up again -->
 <script>
 import CRM from '../components/CRM';
 import LogInModal from '../components/LogInModal';
+import Header from '../components/Header';
 import Vue from 'vue';//check this since i moved everything around
-// import Router from 'vue-router'; //follow max on this
-// import store from '../store';//add this
-
-// import VueRouter from 'vue-router'
-// import { routes } from './routes'
-
-// Vue.use(VueRouter);
-
-// const router = new VueRouter({
-//     routes
-// })
-
-//after routes
-// mode: 'history';//will get rid of the hashtag in the domain...
-//but history mode won't always work with all servers
 
 export default {
   name: 'App',
@@ -131,7 +113,8 @@ export default {
   
   components: {
     CRM,
-    LogInModal
+    LogInModal,
+    Header
   },
 };
 </script>
