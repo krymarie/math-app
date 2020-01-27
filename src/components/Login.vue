@@ -148,7 +148,7 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
        },
       
    },
-     methods: {
+  /*    methods: {
     onSubmit(){
       const formData = {
         email: this.email,
@@ -156,7 +156,7 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
       }
      
     }
- }
+ } */
   }
 
 </script>

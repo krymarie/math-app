@@ -21,14 +21,14 @@
 </template>
 
 <script>
-import login from '../components/Login'
+/* import login from '../components/Login' */
 import newAccount from '../components/NewAccount'
 import Header from '../components/Header'
 
 export default {
   name: 'App',
   components: {
-    'app-login' : login,
+ 
     'app-newAccount' : newAccount,
     Header
   },
