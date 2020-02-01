@@ -6,27 +6,29 @@
     
 
  
-        <h1> OPPS! | 404 </h1>
+        <h1> Oops! | 404 </h1>
         <h2> We can't seem to find the page you're looking for. </h2>
         <p> The page you are looking for might have been removed, had its name changed</p>
         <p> or is temporarily univalibale. </p>
         <div class="buttonBox">
-          <v-btn  color="#a61d36ff"  dark rounded v-on="on" class="buttonRow">Go Home</v-btn>
+           <router-link to="/" tag="li" exact>
+              <v-btn  color="#a61d36ff"  dark rounded v-on="on" class="buttonRow">Go Home</v-btn>
+            </router-link>
           <v-btn  color= "#1b74bcff" outlined rounded v-on="on" class="buttonRow">Contact Us</v-btn>
         </div>
-  
+          
   </v-container>
 </template>
 
 <script>
-import login from '../components/Login'
+/* import login from '../components/Login' */
 import newAccount from '../components/NewAccount'
 import Header from '../components/Header'
 
 export default {
   name: 'App',
   components: {
-    'app-login' : login,
+ 
     'app-newAccount' : newAccount,
     Header
   },
@@ -35,7 +37,7 @@ export default {
        
   }),
   created(){
-      setTimeout( () => this.$router.push({ path: '/'}), 300000);
+      setTimeout( () => this.$router.push({ path: '/'}), 60000);
   }
 
 }
@@ -54,7 +56,7 @@ export default {
 
 h1{
   text-align: center;
-  font-size: 72px;
+  font-size: 8rem;
    background: linear-gradient(to right, #a61d36ff, #1b74bcff); 
   /* clip hackery */
   -webkit-background-clip: text;
@@ -74,12 +76,14 @@ h2{
 }
 .buttonBox{
   display: flex;
-  justify-content: center;
-  margin: 4% 0;
+  justify-content: space-evenly;
+  margin: 4% 25%;
 }
 
-.buttonRow{
-  margin: 0 4%;
+
+
+li{
+  list-style: none;
 }
 
 </style>

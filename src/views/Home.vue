@@ -9,7 +9,7 @@
       <v-col xs="12" >
       <v-card
       >
-      <v-img contain class="heroImg white--text align-end" contain src="/assets/images/hero-600w.jpg"
+      <v-img contain class="heroImg white--text align-end"  src="/assets/images/hero-600w.jpg"
       alt="heroImage"
       >
       <v-card-title class="heroTitle" >LEARN ALGEBRA FROM HOME</v-card-title>
@@ -102,7 +102,7 @@ cols="6"
 cols="12"
 >
 <v-card>
-<v-img class="studentImg"src="/assets/images/hero-720w.jpg"></v-img>
+<v-img class="studentImg" src="/assets/images/hero-720w.jpg"></v-img>
 </v-card>
 </v-col>
 </v-row>
@@ -166,14 +166,14 @@ cols="12"
 </template>
 
 <script>
-import login from '../components/Login'
+/* import login from '../components/Login' */
 import newAccount from '../components/NewAccount'
 import Header from '../components/Header'
 
 export default {
   name: 'App',
   components: {
-    'app-login' : login,
+ /*    'app-login' : login, */
     'app-newAccount' : newAccount,
     Header
   },

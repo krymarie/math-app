@@ -1,11 +1,17 @@
+/* eslint-disable vue/valid-template-root */
 <template>
 <v-container class="header">
+   <router-link to="/"  active-class="active" exact>
   <img
     class="logo"
     src="/assets/images/FLC-Logo-Large-2b.png"
   />
+     </router-link>
   <app-login class="login"/>
+  
   </v-container>
+
+
 </template>
 
 

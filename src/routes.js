@@ -1,3 +1,4 @@
+  
 import Home from './views/Home.vue'
 import Admin from './views/Admin.vue'
 import MainDashboard from './views/MainDashboard.vue'
@@ -26,3 +27,4 @@ export const routes = [
   
 ]
 
+  
