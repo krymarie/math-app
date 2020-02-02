@@ -25,34 +25,34 @@
 
               <v-btn  color="#1b74bcff" tile dark block @click="dialog = false" class="facebook">
                 <v-icon class="iconFacebook"> fab fa-facebook-f </v-icon>
-                 Sign Up with FaceBook</v-btn>
+                 Login in with FaceBook</v-btn>
              
               <p>-- or --</p>
 
                <v-text-field
-               class="infomation" 
-               @blur="$v.email.$touch()"
-            v-model.lazy="email"
-            :rules="emailRules"
-            label="E-mail"
-            required
-            type="email"
-          ></v-text-field>
+                class="infomation" 
+                @blur="$v.email.$touch()"
+                v-model.lazy="email"
+                :rules="emailRules"
+                label="E-mail"
+                required
+                type="email"
+               ></v-text-field>
  
                <v-text-field                        
-            v-model="password"
-             @blur="$v.password.$touch()"
-            :append-icon="show ? 'visibility' : 'visibility_off'"
-            :rules="[rules.required, rules.min]"
-            :type="show ? 'text' : 'password'"
-            name="password"
-            label="Enter Password"
-            hint="At least 8 characters"
-            counter
-            @click:append="show = !show"
-          ></v-text-field>
+                  v-model="password"
+                  @blur="$v.password.$touch()"
+                  :append-icon="show ? 'visibility' : 'visibility_off'"
+                  :rules="[rules.required, rules.min]"
+                  :type="show ? 'text' : 'password'"
+                  name="password"
+                  label="Enter Password"
+                  hint="At least 8 characters"
+                  counter
+                  @click:append="show = !show"
+              ></v-text-field>
             
-            <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit" :disabled="$v.$invalid" >Login</v-btn>
+            <v-btn  color="#a61d36ff"  tile  block class="started" type="submit" @click="onSubmit()" >Login</v-btn>
               
                 <h3 class="headline"> 
                   <v-btn
@@ -134,6 +134,7 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
+      formData: '',
    
     }),
      validations: {
@@ -146,8 +147,17 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
          minLength: minLength(8)
        },
       
-   }
- }
+   },
+  /*    methods: {
+    onSubmit(){
+      const formData = {
+        email: this.email,
+        password: this.password,
+      }
+     
+    }
+ } */
+  }
 
 </script>
 
