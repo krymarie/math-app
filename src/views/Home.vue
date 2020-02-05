@@ -3,6 +3,7 @@
 <v-layout fluid row wrap>
 <Header/>
       <app-newAccount class="new-account"/>
+
 <v-container class="mx-auto" no-gutters>
 <v-col cols="12">
       <v-row>
@@ -169,6 +170,7 @@ cols="12"
 /* import login from '../components/Login' */
 import newAccount from '../components/NewAccount'
 import Header from '../components/Header'
+
 
 export default {
   name: 'App',
