@@ -1,103 +1,74 @@
 <template>
-  <v-container>
-    
-    <Header/>
-    <h1 style="font-size: 40px; margin-top: 40px">Test Who's Learning?</h1>
-      
-      <v-container>
-        <v-layout>
-          <v-flex xs12 sm6 style="display: flex;">
-            <v-card href="/studentdashboard" hover height="auto" class="studentCard">
-                <v-card-title 
-                    class="studentAvatar"
-                >
-                    <v-img
-                    class="avatarImage"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_RduMlXDb9A-mc_msw8SXpfyv5L3pZvZyLKFKYdf1ZTM4zdd&s"
+  <v-container class="page-container">
+    <Header />
+    <h1>Who's Learning?</h1>
 
-                    />
-                </v-card-title>
-                <h2 style="padding: 10px">Cameron</h2>    
-            </v-card>
-            <v-card href="/studentdashboard" hover height="auto" class="studentCard">
-                <v-card-title 
-                    class="studentAvatar"
-                >
-                    <v-img
-                    class="avatarImage"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_RduMlXDb9A-mc_msw8SXpfyv5L3pZvZyLKFKYdf1ZTM4zdd&s"
-
-                    />
-                </v-card-title>
-                <h2 style="padding: 10px">Sally</h2>    
-            </v-card>
-            <br>
-            <v-card href="/studentdashboard" hover height="auto" class="studentCard">
-                <v-card-title 
-                    class="studentAvatar"
-                >
-                    <v-img
-                    class="avatarImage"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_RduMlXDb9A-mc_msw8SXpfyv5L3pZvZyLKFKYdf1ZTM4zdd&s"
-
-                    />
-                </v-card-title>
-                <h2 style="padding: 10px">John</h2>    
-            </v-card>
-            <v-card href="#" hover height="auto" class="studentCard addStudent">
-                <v-card-title 
-                    class="studentAvatar"
-                >
-                    <v-img
-                    class="avatarImage"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_RduMlXDb9A-mc_msw8SXpfyv5L3pZvZyLKFKYdf1ZTM4zdd&s"
-
-                    />
-                </v-card-title>
-                <h2 style="padding: 10px">+ Add</h2>    
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-
-  
+    <v-container>
+      <v-layout>
+        <v-flex xs12 sm6 style="display: flex;">
+          <!-- itterates over student data to populate student tiles -->
+          <div v-for="(student, key) in students" :key="key">
+            <StudentCard :options="student" />
+          </div>
+          <!-- TODO: add function to open Add Student Modal -->
+          <StudentCard
+            :options="addStudent"
+            class="addStudent"
+            @click="openAddStudenModal"
+          />
+        </v-flex>
+      </v-layout>
+    </v-container>
   </v-container>
 </template>
 
 <script>
-import Header from '../components/Header' 
+import Header from "../components/Header";
+import StudentCard from "../components/StudentCard";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Header
+    Header,
+    StudentCard
   },
 
-  data: () => ({
-       
-  }),
-}
+  data() {
+    return {
+      // import student data for this component
+      students: [
+        {
+          firstName: "Cameron",
+          key: "00001"
+        },
+        {
+          firstName: "Kelly",
+          key: "00002"
+        },
+        {
+          firstName: "Sam",
+          key: "00003"
+        }
+      ],
+      addStudent: { firstName: "+ Add", key: "00000" }
+    };
+  }
+};
 </script>
 
 <style lang="sass" scoped>
-.border
-  width:1000px
+.page-container
+  width:1200px
   height: 100%
 
-h1
-  text-align: center
+  .content-container
+    align-content: center
 
-.studentCard
-    margin: 10px
+h1
+  font-size: 40px
+  margin-top: 40px
+  text-align: center
 
 .addStudent
     opacity: 0.3
-
-.studentAvatar
-    background-color: lightgray
-
-.avatarImage
-    max-width: 100px
-    max-height: 120px
-
 </style>
