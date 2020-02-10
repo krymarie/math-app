@@ -4,7 +4,7 @@
     <h1>Who's Learning?</h1>
 
     <v-container>
-      <v-layout>
+      <v-layout style="justify-content: center;">
         <v-flex xs12 sm6 style="display: flex;">
           <!-- itterates over student data to populate student tiles -->
           <div v-for="(student, key) in students" :key="key">
@@ -55,15 +55,13 @@ export default {
   }
 };
 </script>
-
-<style lang="sass" scoped>
+<style lang="sass">
 .page-container
   width:1200px
   height: 100%
+</style>
 
-  .content-container
-    align-content: center
-
+<style lang="sass" scoped>
 h1
   font-size: 40px
   margin-top: 40px
