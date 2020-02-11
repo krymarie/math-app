@@ -1,36 +1,37 @@
 <template>
 
 <v-layout fluid row wrap>
-<Header/>
-      <app-newAccount class="new-account"/>
+  <app-header></app-header>
+      <app-newAccount class="new-account"> </app-newAccount>
 
 <v-container class="mx-auto" no-gutters>
-<v-col cols="12">
-      <v-row>
-      <v-col xs="12" >
-      <v-card
-      >
-      <v-img contain class="heroImg white--text align-end"  src="/assets/images/hero-600w.jpg"
-      alt="heroImage"
-      >
-      <v-card-title class="heroTitle" >LEARN ALGEBRA FROM HOME</v-card-title>
-      <v-card-subtitle class="heroSub" >With Algebra Core, enjoy our free software and start learning now!</v-card-subtitle>
-      </v-img>
-      </v-card>
+  <v-row>
+    <v-col cols="12"  xs="12" >
+   
+        <v-card
+        >
+          <v-img contain class="heroImg white--text align-end"  src="/assets/images/hero-600w.jpg" gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)"
+          alt="heroImage"
+          >
+            <v-card-title class="heroTitle" >LEARN ALGEBRA FROM HOME</v-card-title>
+           <v-card-subtitle class="heroSub" >With Algebra Core, enjoy our free software and start learning now!</v-card-subtitle>
+          </v-img>
+        </v-card>
       </v-col>
-      </v-row>
-</v-col>
+     </v-row>
   </v-container>
 
 
   <v-container>
-  <v-col cols="12">
- <v-row justify="center" >
- <v-col xs="8">
-<h1 class="pa-2" >Virtues of Algebra From Home:</h1>
-</v-col>
-</v-row>
-</v-col>
+    <v-row   
+      :align="alignment"
+      :justify="justify">
+
+      <v-col cols="12" justify="center" align="center">
+        <h1 >Virtues of Algebra From Home:</h1>
+      </v-col>
+    </v-row>
+
 </v-container>
 
 
@@ -73,7 +74,7 @@
 cols="12"
 md="6"
 >
-<v-img class="studentImg" src="/assets/images/hero-720w.jpg"></v-img>
+<v-img class="studentImg" src="/assets/images/hero-720w.jpg" gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)"></v-img>
 </v-col>
 <v-col
 cols="6"
@@ -177,7 +178,7 @@ export default {
   components: {
  /*    'app-login' : login, */
     'app-newAccount' : newAccount,
-    Header
+    'app-header' : Header
   },
 
    data: () => ({
@@ -207,8 +208,10 @@ export default {
 
 <style scoped>
 h1 {
-  text-align: center;
+  font-size: 36px;
+
 }
+
 
 .heroImg {
   max-width: 100vw;
