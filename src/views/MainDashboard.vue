@@ -5,7 +5,7 @@
 
     <v-container>
       <v-layout style="justify-content: center;">
-        <v-flex xs12 sm6 style="display: flex;">
+        <npv-flex xs12 sm6 style="display: flex;">
           <!-- itterates over student data to populate student tiles -->
           <div v-for="(student, key) in students" :key="key">
             <StudentCard :options="student" />
@@ -16,7 +16,7 @@
             class="addStudent"
             @click="openAddStudenModal"
           />
-        </v-flex>
+        </npv-flex>
       </v-layout>
     </v-container>
   </v-container>

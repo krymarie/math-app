@@ -26,8 +26,70 @@
       <!-- </v-container> -->
 
       <v-content>
-        <h1>Cameron</h1>
-        <p>Here we can conditionally pull each page</p>
+        <v-img
+          class="avatarImage"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_RduMlXDb9A-mc_msw8SXpfyv5L3pZvZyLKFKYdf1ZTM4zdd&s"
+        />
+        <h1>{{ studentName }}</h1>
+        <h2>Unit {{ currentUnit }}</h2>
+        <v-progress-circular
+          color="rgb(27, 116, 188)"
+          :value="progress"
+          :rotate="-90"
+          :size="150"
+          :width="30"
+        ></v-progress-circular>
+        <v-stepper v-model="e6" vertical>
+          <v-stepper-step :complete="e6 > 1" step="1">
+            Select a Unit
+            <small>Unit 1</small>
+          </v-stepper-step>
+
+          <v-stepper-content step="1">
+            <v-card
+              color="grey lighten-1"
+              class="mb-12"
+              height="200px"
+            ></v-card>
+            <v-btn color="primary" @click="e6 = 2">Continue</v-btn>
+            <v-btn text>Cancel</v-btn>
+          </v-stepper-content>
+
+          <v-stepper-step :complete="e6 > 2" step="2">Unit 2</v-stepper-step>
+
+          <v-stepper-content step="2">
+            <v-card
+              color="grey lighten-1"
+              class="mb-12"
+              height="200px"
+            ></v-card>
+            <v-btn color="primary" @click="e6 = 3">Continue</v-btn>
+            <v-btn text>Cancel</v-btn>
+          </v-stepper-content>
+
+          <v-stepper-step :complete="e6 > 3" step="3">Unit 3</v-stepper-step>
+
+          <v-stepper-content step="3">
+            <v-card
+              color="grey lighten-1"
+              class="mb-12"
+              height="200px"
+            ></v-card>
+            <v-btn color="primary" @click="e6 = 4">Continue</v-btn>
+            <v-btn text>Cancel</v-btn>
+          </v-stepper-content>
+
+          <v-stepper-step step="4">Unit 4</v-stepper-step>
+          <v-stepper-content step="4">
+            <v-card
+              color="grey lighten-1"
+              class="mb-12"
+              height="200px"
+            ></v-card>
+            <v-btn color="primary" @click="e6 = 1">Continue</v-btn>
+            <v-btn text>Cancel</v-btn>
+          </v-stepper-content>
+        </v-stepper>
       </v-content>
     </v-container>
   </v-container>
@@ -42,7 +104,7 @@ export default {
 
   data() {
     return {
-      // import student data for this component
+      e6: 1,
       sideMenu: [
         {
           icon: "home",
@@ -60,7 +122,11 @@ export default {
           icon: "settings",
           key: "settings"
         }
-      ]
+      ],
+      //student data imported and passed thru
+      studentName: "Cameron P",
+      currentUnit: 1,
+      progress: 67
     };
   },
 
@@ -75,3 +141,13 @@ export default {
   }
 };
 </script>
+
+<style lang="sass" scoped>
+.progress-circular
+  margin: 1rem
+
+.avatarImage
+    max-width: 40px
+    max-height: 40px
+    border-radius: 50px
+</style>
