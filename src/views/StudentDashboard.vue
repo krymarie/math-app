@@ -41,35 +41,44 @@
         ></v-progress-circular>
         <v-stepper v-model="e6" vertical>
           <!-- itterate ofer units available from db with a v-for units as unit... to created these -->
-          <v-stepper-step :complete="e6 > 1" step="1">
-            Select a Unit
-            <small>Unit 1</small>
-          </v-stepper-step>
 
-          <!-- use @click="e6 = 2" at end of unit to progess to the next unit -->
+          <v-stepper-step :complete="e6 > 1" step="1"
+            >Current Unit<small>Unit 1</small></v-stepper-step
+          >
           <v-stepper-content step="1">
             <v-btn color="primary" href="/lessondashboard">Begin Unit 1</v-btn>
             <v-btn text @click="e6 = 2">SKIP FOR DEV ONLY</v-btn>
           </v-stepper-content>
 
           <v-stepper-step :complete="e6 > 2" step="2">Unit 2</v-stepper-step>
-
           <v-stepper-content step="2">
-            <v-btn color="primary" @click="e6 = 3">Begin Unit 2</v-btn>
-            <v-btn text>Back</v-btn>
+            <v-btn color="primary" href="/lessondashboard">Begin Unit 2</v-btn>
+            <v-btn text @click="e6 = 3">SKIP FOR DEV ONLY</v-btn>
           </v-stepper-content>
 
           <v-stepper-step :complete="e6 > 3" step="3">Unit 3</v-stepper-step>
-
           <v-stepper-content step="3">
-            <v-btn color="primary" @click="e6 = 4">Begin Unit 3</v-btn>
-            <v-btn text>Back</v-btn>
+            <v-btn color="primary" href="/lessondashboard">Begin Unit 3</v-btn>
+            <v-btn text @click="e6 = 4">SKIP FOR DEV ONLY</v-btn>
           </v-stepper-content>
 
-          <v-stepper-step step="4">Unit 4</v-stepper-step>
+          <v-stepper-step :complete="e6 > 4" step="4">Unit 4</v-stepper-step>
           <v-stepper-content step="4">
-            <v-btn color="primary" @click="e6 = 1">Begin Unit 4</v-btn>
-            <v-btn text>Back</v-btn>
+            <v-btn color="primary" href="/lessondashboard">Begin Unit 4</v-btn>
+            <v-btn text @click="e6 = 5">SKIP FOR DEV ONLY</v-btn>
+          </v-stepper-content>
+
+          <v-stepper-step :complete="e6 > 5" step="5">Unit 5</v-stepper-step>
+          <v-stepper-content step="5">
+            <v-btn color="primary" href="/lessondashboard">Begin Unit 5</v-btn>
+            <v-btn text @click="e6 = 6">SKIP FOR DEV ONLY</v-btn>
+          </v-stepper-content>
+
+          <v-stepper-step step="6">Unit 6</v-stepper-step>
+          <v-stepper-content step="6">
+            <v-btn color="primary" href="/lessondashboard">Begin Unit 6</v-btn>
+            <v-btn text @click="e6 = 1">SKIP FOR DEV ONLY</v-btn>
+            <!-- change the last @click for last unit load "Congratulations View"" -->
           </v-stepper-content>
         </v-stepper>
       </v-content>

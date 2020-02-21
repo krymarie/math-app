@@ -32,6 +32,7 @@
         />
         <h1>{{ studentName }}</h1>
         <h2>Unit {{ currentUnit }}</h2>
+        <h2>Lesson {{ currentLesson }}</h2>
         <v-progress-circular
           color="rgb(27, 116, 188)"
           :value="progress"
@@ -40,55 +41,39 @@
           :width="30"
         ></v-progress-circular>
         <v-stepper v-model="e6" vertical>
+          <!-- Itterate over these with v-for and props since each unit had diffren number of lessons -->
           <v-stepper-step :complete="e6 > 1" step="1">
-            Select a Unit
-            <small>Unit 1</small>
+            Current Lesson
+            <small>Lesson 1</small>
           </v-stepper-step>
 
           <v-stepper-content step="1">
-            <v-card
-              color="grey lighten-1"
-              class="mb-12"
-              height="200px"
-            ></v-card>
-            <v-btn color="primary" @click="e6 = 2">Continue</v-btn>
-            <v-btn text>Cancel</v-btn>
+            <v-card color="grey lighten-1" class="mb-12" height="200px"
+              ><v-btn color="primary" @click="e6 = 2">Continue</v-btn>
+            </v-card>
           </v-stepper-content>
 
-          <v-stepper-step :complete="e6 > 2" step="2">Unit 2</v-stepper-step>
-
+          <v-stepper-step :complete="e6 > 2" step="2">Lesson 2</v-stepper-step>
           <v-stepper-content step="2">
-            <v-card
-              color="grey lighten-1"
-              class="mb-12"
-              height="200px"
-            ></v-card>
-            <v-btn color="primary" @click="e6 = 3">Continue</v-btn>
-            <v-btn text>Cancel</v-btn>
+            <v-card color="grey lighten-1" class="mb-12" height="200px"
+              ><v-btn color="primary" @click="e6 = 3">Continue</v-btn></v-card
+            >
           </v-stepper-content>
 
-          <v-stepper-step :complete="e6 > 3" step="3">Unit 3</v-stepper-step>
-
+          <v-stepper-step :complete="e6 > 3" step="3">Lesson 3</v-stepper-step>
           <v-stepper-content step="3">
-            <v-card
-              color="grey lighten-1"
-              class="mb-12"
-              height="200px"
-            ></v-card>
-            <v-btn color="primary" @click="e6 = 4">Continue</v-btn>
-            <v-btn text>Cancel</v-btn>
+            <v-card color="grey lighten-1" class="mb-12" height="200px"
+              ><v-btn color="primary" @click="e6 = 4">Continue</v-btn></v-card
+            >
           </v-stepper-content>
 
-          <v-stepper-step step="4">Unit 4</v-stepper-step>
+          <v-stepper-step step="4">Lesson 4</v-stepper-step>
           <v-stepper-content step="4">
-            <v-card
-              color="grey lighten-1"
-              class="mb-12"
-              height="200px"
-            ></v-card>
-            <v-btn color="primary" @click="e6 = 1">Continue</v-btn>
-            <v-btn text>Cancel</v-btn>
+            <v-card color="grey lighten-1" class="mb-12" height="200px"
+              ><v-btn color="primary" @click="e6 = 1">Continue</v-btn></v-card
+            >
           </v-stepper-content>
+          <!--  @click="e6 = 2" set e6 to next unit...update e6 to current Unit and currentLesson...-->
         </v-stepper>
       </v-content>
     </v-container>
@@ -125,7 +110,8 @@ export default {
       ],
       //student data imported and passed thru
       studentName: "Cameron P",
-      currentUnit: 1,
+      currentUnit: 1, //set prop to data current_lesson
+      currentLesson: 1, //set prop to data current_lesson
       progress: 67
     };
   },
