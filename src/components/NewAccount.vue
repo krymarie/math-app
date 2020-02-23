@@ -25,9 +25,7 @@
           <v-container class="containerLayout">
             <v-row>
 
-              <v-btn  color="#1b74bcff" tile dark block @click="dialog = false" class="facebook">
-                <v-icon class="iconFacebook"> fab fa-facebook-f </v-icon>
-                 Sign Up with FaceBook</v-btn>
+       
              
               <p>-- or --</p>
 
@@ -114,9 +112,7 @@ import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
        email:{
          required,
          email,
-         unique: value =>{
-
-         }
+      
        },
        password: {
          required,

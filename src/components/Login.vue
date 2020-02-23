@@ -23,10 +23,7 @@
           <v-container class="containerLayout">
             <v-row>
 
-              <v-btn  color="#1b74bcff" tile dark block @click="dialog = false" class="facebook">
-                <v-icon class="iconFacebook"> fab fa-facebook-f </v-icon>
-                 Login in with FaceBook</v-btn>
-             
+    
               <p>-- or --</p>
 
                <v-text-field
@@ -109,8 +106,15 @@
 
 
 <script>
+
+
 import { required, minLength, email, } from 'vuelidate/lib/validators'
+
   export default {
+   components: {
+ /*    'app-login' : login, */
+
+  }, 
     data: () => ({
       show1: '',
       show: '',
@@ -148,15 +152,7 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
        },
       
    },
-  /*    methods: {
-    onSubmit(){
-      const formData = {
-        email: this.email,
-        password: this.password,
-      }
-     
-    }
- } */
+
   }
 
 </script>
