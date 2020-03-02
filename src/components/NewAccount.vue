@@ -24,17 +24,12 @@
         <v-card-text>
           <v-container class="containerLayout">
             <v-row>
-
-       
-             
-              <p>-- or --</p>
-
                <v-text-field
                class="infomation" 
                @blur="$v.email.$touch()"
             v-model.lazy="email"
             :rules="emailRules"
-            label="E-mail"
+            label="Email"
             required
             type="email"
           ></v-text-field>
@@ -66,8 +61,7 @@
               <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit" :disabled="$v.$invalid" >Get Started</v-btn>
 
               <h3 class="headline">  Already have an account? <v-btn text color="primary"  type="submit">Login</v-btn> </h3>
-                
-                
+       
             </v-row>
           </v-container>
         </v-card-text>

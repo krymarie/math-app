@@ -22,16 +22,12 @@
         <v-card-text>
           <v-container class="containerLayout">
             <v-row>
-
-    
-              <p>-- or --</p>
-
                <v-text-field
                 class="infomation" 
                 @blur="$v.email.$touch()"
                 v-model.lazy="email"
                 :rules="emailRules"
-                label="E-mail"
+                label="Email"
                 required
                 type="email"
                ></v-text-field>
@@ -49,7 +45,7 @@
                   @click:append="show = !show"
               ></v-text-field>
             
-            <v-btn  color="#a61d36ff"  tile  block class="started" type="submit" @click="onSubmit()" >Login</v-btn>
+            <v-btn  color="#a61d36ff"  tile  block class="started" type="submit" @click="onSubmit()" value="submit">Login</v-btn>
               
                 <h3 class="headline"> 
                   <v-btn
@@ -78,7 +74,7 @@
                       @blur="$v.recoverEmail.$touch()"
                       v-model.lazy="recoverEmail"
                       :rules="recoverEmail"
-                      label="E-mail"
+                      label="Email"
                       required
                       type="email"
                     ></v-text-field>
@@ -107,7 +103,7 @@
 
 <script>
 
-
+import axios from 'axios'
 import { required, minLength, email, } from 'vuelidate/lib/validators'
 
   export default {
@@ -150,8 +146,29 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
          required,
          minLength: minLength(8)
        },
+       User: '',
       
    },
+  methods:{
+    onSubmit() {
+        return axios.post('http://localhost:8080/auth/login',
+        {
+          method: 'Post',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email.value,
+     
+          })
+        })
+            .then(response =>{
+                this.email = response.data.email
+                this.password = response.data.password
+            // eslint-disable-next-line no-console
+            }).catch(error => console.log(error))
+        }
+  }
 
   }
 
