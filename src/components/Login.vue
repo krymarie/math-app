@@ -45,7 +45,7 @@
                   @click:append="show = !show"
               ></v-text-field>
             
-            <v-btn  color="#a61d36ff"  tile  block class="started" type="submit" @click="onSubmit()" value="submit">Login</v-btn>
+            <v-btn  color="#a61d36ff"  tile  block class="started" type="submit" @click="onSubmit()" value="submit" to="/maindashboard">Login</v-btn>
               
                 <h3 class="headline"> 
                   <v-btn
@@ -78,7 +78,7 @@
                       required
                       type="email"
                     ></v-text-field>
-                     <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit"  >Recover Password</v-btn>
+                     <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit">Recover Password</v-btn>
                   </v-card-text>
          
           </v-card>

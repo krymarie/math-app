@@ -58,9 +58,9 @@
               counter
               @click:append="show1 = !show1"
             ></v-text-field>
-              <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit" :disabled="$v.$invalid" >Get Started</v-btn>
+              <v-btn  color="#a61d36ff"  tile  block @click="dialog = false, onSubmit()" class="started" type="submit" :disabled="$v.$invalid" to="/maindashboard">Get Started</v-btn>
 
-              <h3 class="headline">  Already have an account? <v-btn text color="primary"  type="submit">Login</v-btn> </h3>
+              <h3 class="headline">  Already have an account? <v-btn text color="primary"  type="submit" to="/" >Login</v-btn> </h3>
        
             </v-row>
           </v-container>
@@ -116,7 +116,49 @@ import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
          required,
         sameAs: sameAs('password')
        }
-   }
+   },
+    methods:{
+    onSubmit(email, password) {
+      const graphqlQuery = {
+        query: `
+          mutation{
+            createUser(userInput: {
+              email:"${email.value}", 
+              password:"${password.value}"}){
+              email
+              password
+              _id
+      }
+      }
+        `
+      }
+        return axios.post('http://localhost:8000/graphql',
+        {
+          method: 'Post',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email.value,
+            password: password.value
+          })
+        })
+            .then(response =>{
+              if (resData.errors && resData.errors[0].status === 422){
+                throw new Error(
+                  "Validation has failed.  Email is already being used"
+                )
+              }
+              if (resData.errors){
+                throw new Error("User creation has failed")
+              }
+                this.email = response.data.email
+                this.password = response.data.password
+            // eslint-disable-next-line no-console
+            }).catch(error => console.log(error))
+        }
+  }
+
  }
 
 </script>
