@@ -147,11 +147,24 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
          minLength: minLength(8)
        },
        User: '',
-      
+      resData: ''
    },
   methods:{
-    onSubmit() {
-        return axios.post('http://localhost:8080/auth/login',
+    onSubmit(email, password) {
+      const graphqlQuery = {
+        query: `
+          mutation{
+            createUser(userInput: {
+              email:"${email.value}", 
+              password:"${password.value}"}){
+              email
+              password
+              _id
+      }
+      }
+        `
+      }
+        return axios.post('http://localhost:8000/graphql',
         {
           method: 'Post',
           headers: {
@@ -159,10 +172,18 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
           },
           body: JSON.stringify({
             email: email.value,
-     
+            password: password.value
           })
         })
             .then(response =>{
+              if (resData.errors && resData.errors[0].status === 422){
+                throw new Error(
+                  "Validation has failed.  Email is already being used"
+                )
+              }
+              if (resData.errors){
+                throw new Error("User creation has failed")
+              }
                 this.email = response.data.email
                 this.password = response.data.password
             // eslint-disable-next-line no-console
