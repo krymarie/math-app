@@ -30,6 +30,7 @@
                 label="Email"
                 required
                 type="email"
+                id="email"
                ></v-text-field>
  
                <v-text-field                        
@@ -41,11 +42,12 @@
                   name="password"
                   label="Enter Password"
                   hint="At least 8 characters"
+                  id="password"
                   counter
                   @click:append="show = !show"
               ></v-text-field>
             
-            <v-btn  color="#a61d36ff"  tile  block class="started" type="submit" @click="onSubmit()" value="submit" to="/maindashboard">Login</v-btn>
+            <v-btn  color="#a61d36ff"  tile  block class="started" type="submit" @click="onSubmit()" value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
               
                 <h3 class="headline"> 
                   <v-btn
@@ -103,7 +105,7 @@
 
 <script>
 
-import axios from 'axios'
+/* import axios from 'axios' */
 import { required, minLength, email, } from 'vuelidate/lib/validators'
 
   export default {
@@ -147,9 +149,8 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
          minLength: minLength(8)
        },
        User: '',
-      resData: ''
    },
-  methods:{
+/*   methods:{
     onSubmit(email, password) {
       const graphqlQuery = {
         query: `
@@ -186,10 +187,9 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
               }
                 this.email = response.data.email
                 this.password = response.data.password
-            // eslint-disable-next-line no-console
             }).catch(error => console.log(error))
         }
-  }
+  } */
 
   }
 

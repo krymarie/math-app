@@ -27,11 +27,12 @@
                <v-text-field
                class="infomation" 
                @blur="$v.email.$touch()"
-            v-model.lazy="email"
+            v-model="email"
             :rules="emailRules"
             label="Email"
             required
             type="email"
+            id="email"
           ></v-text-field>
  
                <v-text-field                        
@@ -60,7 +61,7 @@
             ></v-text-field>
               <v-btn  color="#a61d36ff"  tile  block @click="dialog = false, onSubmit()" class="started" type="submit" :disabled="$v.$invalid" to="/maindashboard">Get Started</v-btn>
 
-              <h3 class="headline">  Already have an account? <v-btn text color="primary"  type="submit" to="/" >Login</v-btn> </h3>
+              <h4 class="headline">  Already have an account?   <app-login class="login"/></h4>
        
             </v-row>
           </v-container>
@@ -80,27 +81,35 @@
 
 
 <script>
+/* 
+import axios from 'axios' */
 import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
+import login from '../components/Login'
+
   export default {
+        components: {
+        'app-login' : login
+    },
     data: () => ({
       show1: '',
       show: '',
       dialog: false,
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid',
-      ],
-    
-      password: '',
-      rules: {
+        resData: '',
+        email: '',
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /.+@.+/.test(v) || 'E-mail must be valid',
+        ],
+          password: '',
+        rules: {
+          required: value => !!value || 'Required.',
+          min: v => v.length >= 8 || 'Min 8 characters',
+          emailMatch: () => ('The email and password you entered don\'t match'),
+        },
+        confirmPassword: '',
         required: value => !!value || 'Required.',
-        min: v => v.length >= 8 || 'Min 8 characters',
-        emailMatch: () => ('The email and password you entered don\'t match'),
-      },
-      confirmPassword: '',
-       required: value => !!value || 'Required.',
-        min: v => v.length >= 8 || 'Password must match',
+          min: v => v.length >= 8 || 'Password must match',
+
     }),
      validations: {
        email:{
@@ -117,7 +126,7 @@ import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
         sameAs: sameAs('password')
        }
    },
-    methods:{
+  /*  methods:{
     onSubmit(email, password) {
       const graphqlQuery = {
         query: `
@@ -144,20 +153,20 @@ import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
           })
         })
             .then(response =>{
-              if (resData.errors && resData.errors[0].status === 422){
+           if (resData.errors && resData.errors[0].status === 422){
                 throw new Error(
                   "Validation has failed.  Email is already being used"
                 )
               }
               if (resData.errors){
                 throw new Error("User creation has failed")
-              }
+              } 
                 this.email = response.data.email
                 this.password = response.data.password
             // eslint-disable-next-line no-console
             }).catch(error => console.log(error))
         }
-  }
+  }  */
 
  }
 
@@ -220,8 +229,11 @@ import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
   color: #fff;
 }
 
-h3{
+h4{
+  padding-top: 4%;
   text-align: center;
+  display: flex;
+
 }
 
 .image{
@@ -237,4 +249,5 @@ p {
 h4{
   margin: 2% 0;
 }
+
 </style>
