@@ -24,6 +24,14 @@
         <v-card-text>
           <v-container class="containerLayout">
             <v-row>
+
+<ApolloMutation
+:mutation="require('../graphql/newAccount.gql')"
+:variables="{email, password}"
+@done="createAccount"
+>
+    <template v-slot="{mutate}">
+      <form v-on:submit.prevent=" mutate()">
                <v-text-field
                class="infomation" 
                @blur="$v.email.$touch()"
@@ -59,7 +67,13 @@
               counter
               @click:append="show1 = !show1"
             ></v-text-field>
-              <v-btn  color="#a61d36ff"  tile  block @click="dialog = false, onSubmit()" class="started" type="submit" :disabled="$v.$invalid" to="/maindashboard">Get Started</v-btn>
+
+   </form>
+      </template>
+    </ApolloMutation>
+
+
+              <v-btn  color="#a61d36ff"  tile  block @click="dialog = false, mutate()" class="started" type="submit" :disabled="$v.$invalid" to="/maindashboard">Get Started</v-btn>
 
               <h4 class="headline">  Already have an account?   <app-login class="login"/></h4>
        
@@ -81,8 +95,8 @@
 
 
 <script>
-/* 
-import axios from 'axios' */
+ 
+import gql from 'graphql-tag'
 import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
 import login from '../components/Login'
 
@@ -126,48 +140,8 @@ import login from '../components/Login'
         sameAs: sameAs('password')
        }
    },
-  /*  methods:{
-    onSubmit(email, password) {
-      const graphqlQuery = {
-        query: `
-          mutation{
-            createUser(userInput: {
-              email:"${email.value}", 
-              password:"${password.value}"}){
-              email
-              password
-              _id
-      }
-      }
-        `
-      }
-        return axios.post('http://localhost:8000/graphql',
-        {
-          method: 'Post',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            email: email.value,
-            password: password.value
-          })
-        })
-            .then(response =>{
-           if (resData.errors && resData.errors[0].status === 422){
-                throw new Error(
-                  "Validation has failed.  Email is already being used"
-                )
-              }
-              if (resData.errors){
-                throw new Error("User creation has failed")
-              } 
-                this.email = response.data.email
-                this.password = response.data.password
-            // eslint-disable-next-line no-console
-            }).catch(error => console.log(error))
-        }
-  }  */
 
+ 
  }
 
 </script>

@@ -47,7 +47,7 @@
                   @click:append="show = !show"
               ></v-text-field>
             
-            <v-btn  color="#a61d36ff"  tile  block class="started" type="submit" @click="onSubmit()" value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
+            <v-btn  color="#a61d36ff"  tile  block class="started" type="submit" @click="logIN()" value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
               
                 <h3 class="headline"> 
                   <v-btn
@@ -105,19 +105,17 @@
 
 <script>
 
-/* import axios from 'axios' */
+import axios from 'axios' 
 import { required, minLength, email, } from 'vuelidate/lib/validators'
 
   export default {
-   components: {
- /*    'app-login' : login, */
 
-  }, 
     data: () => ({
       show1: '',
       show: '',
       dialog: false,
       dialog2: false,
+      token: "",
       email: '',
       emailRules: [
         v => !!v || 'E-mail is required',
@@ -150,46 +148,47 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
        },
        User: '',
    },
-/*   methods:{
-    onSubmit(email, password) {
+   methods:{
+    logIN(email, password) {
       const graphqlQuery = {
         query: `
-          mutation{
-            createUser(userInput: {
-              email:"${email.value}", 
-              password:"${password.value}"}){
-              email
-              password
-              _id
-      }
-      }
+          {
+            login(email:"${email}", password: "${password}){
+              token
+              userId
+            }
+          }
         `
       }
-        return axios.post('http://localhost:8000/graphql',
+        return axios.POST('http://localhost:8000/graphql',
         {
-          method: 'Post',
+       /*    method: 'Post',
           headers: {
             'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            email: email.value,
-            password: password.value
-          })
+          }, */
+          body: JSON.stringify(graphqlQuery)
         })
             .then(response =>{
-              if (resData.errors && resData.errors[0].status === 422){
+              if (response.errors && response.errors[0].status === 422){
                 throw new Error(
                   "Validation has failed.  Email is already being used"
                 )
               }
-              if (resData.errors){
-                throw new Error("User creation has failed")
+              if (response.errors){
+                throw new Error("User login has failed")
               }
-                this.email = response.data.email
-                this.password = response.data.password
+              this.setState({
+                isAuth: true,
+                token:response.data.login.token,
+                authLoading: false,
+                userId: response.userId
+              })
+              localStorage.setItem('token', response.token)
+              localStorage.setItem('userId', response.userID)
+            // eslint-disable-next-line no-console
             }).catch(error => console.log(error))
         }
-  } */
+  } 
 
   }
 

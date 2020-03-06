@@ -16,11 +16,12 @@
 
 
 <script>
+
 import login from '../components/Login'
 
-  export default {
+  export default { 
     components: {
-        'app-login' : login
+        'app-login' : login,
     },
     data: () => ({
       
