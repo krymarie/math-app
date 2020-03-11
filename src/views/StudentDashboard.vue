@@ -46,7 +46,7 @@
             <v-btn color="primary" href="/lessondashboard">Begin Unit 1</v-btn>
             <v-btn text @click="e6 = 2">SKIP FOR DEV ONLY</v-btn>
             <!-- This button and functionality will need to be stored in LessonDashboard added to end of unit HTML -->
-            <v-btn text @click="updateProgressPercentage">Update Unit Progress</v-btn>
+            <v-btn text @click="updateProgressPercentage">Update Unit Progress Test</v-btn>
           </v-stepper-content>
 
           <v-stepper-step :complete="e6 > 2" step="2">Unit 2</v-stepper-step>
