@@ -162,7 +162,7 @@ export default {
 }
 
 .layout {
-  display: flex;git
+  display: flex;
   justify-content: center;
   margin: -5% 0 -2% 0;
 }
