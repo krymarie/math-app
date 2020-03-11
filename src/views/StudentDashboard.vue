@@ -10,15 +10,11 @@
         floating="floating"
         width="220"
         style="border: 2px solid red"
-      > -->
+      >-->
       <v-list style="width: 40px;">
-        <v-list-tile
-          v-for="(menuItem, key) in sideMenu"
-          :key="key"
-          style="display: flex;"
-        >
+        <v-list-tile v-for="(menuItem, key) in sideMenu" :key="key" style="display: flex;">
           <v-list-tile-action>
-            <v-icon> {{ menuItem.icon }}</v-icon>
+            <v-icon>{{ menuItem.icon }}</v-icon>
           </v-list-tile-action>
         </v-list-tile>
       </v-list>
@@ -42,12 +38,14 @@
         <v-stepper v-model="e6" vertical>
           <!-- itterate ofer units available from db with a v-for units as unit... to created these -->
 
-          <v-stepper-step :complete="e6 > 1" step="1"
-            >Current Unit<small>Unit 1</small></v-stepper-step
-          >
+          <v-stepper-step :complete="e6 > 1" step="1">
+            Current Unit
+            <small>Unit 1</small>
+          </v-stepper-step>
           <v-stepper-content step="1">
             <v-btn color="primary" href="/lessondashboard">Begin Unit 1</v-btn>
-            <v-btn text @click="e6 = 2">SKIP FOR DEV ONLY</v-btn>
+            <v-btn text @click="e6 = 2">SKIP FOR DEV ONLY</v-btn>This button and functionality will need to be stored in LessonDashboard added to end of unit HTML
+            <v-btn text @click="updateProgressPercentage">Update Unit Progress</v-btn>
           </v-stepper-content>
 
           <v-stepper-step :complete="e6 > 2" step="2">Unit 2</v-stepper-step>
@@ -115,17 +113,33 @@ export default {
         }
       ],
       //student data imported and passed thru
-      studentName: "Cameron P",
-      currentUnit: 1,
-      progress: 67
+      studentName: "Cameron P", //api
+      totalUnits: 23, //can be stored here or api UPDATE IF NUMBER OF UNITS/REVIEWS change
+      currentUnit: 1, //api
+      progress: 0 //this is the default used for increment
     };
   },
+  computed: {
+    // moved to method made more sense
+    // progressPercentage: function() {
+    //   let currentProgress = '';
+    //   currentProgress = this.progress + 0.3333;
+    //   return currentProgress;
+    // }
+  },
 
-  // methods: {
-  //   clickToggleDrawer() {
-  //     this.drawer = !this.drawer;
-  //   }
-  // },
+  methods: {
+    updateProgressPercentage() {
+      // let unitIncrement = (this.currentUnit / this.totalUnits) * 100;
+      let unitIncrement = 100 / this.totalUnits; //gets increment percentage
+      this.progress = this.progress + unitIncrement; //update progress donut complete percentage
+      this.currentUnit = this.currentUnit + 1; //updates current unit locally
+      //also need to update current unit in api once added incase accidental closure...
+    }
+    // clickToggleDrawer() {
+    // this.drawer = !this.drawer;
+    //   }
+  },
 
   components: {
     Header
@@ -138,7 +152,7 @@ export default {
   margin: 1rem
 
 .avatarImage
-    max-width: 40px
-    max-height: 40px
-    border-radius: 50px
+  max-width: 40px
+  max-height: 40px
+  border-radius: 50px
 </style>
