@@ -1,168 +1,133 @@
 <template>
-
+<div class="homeLayout">
 <v-layout fluid row wrap>
-<Header/>
-      <app-newAccount class="new-account"/>
+  <app-header></app-header>
+      <app-newAccount class="new-account"> </app-newAccount>
+
 <v-container class="mx-auto" no-gutters>
-<v-col cols="12">
-      <v-row>
-      <v-col xs="12" >
-      <v-card
-      >
-      <v-img contain class="heroImg white--text align-end"  src="/assets/images/hero-600w.jpg"
-      alt="heroImage"
-      >
-      <v-card-title class="heroTitle" >LEARN ALGEBRA FROM HOME</v-card-title>
-      <v-card-subtitle class="heroSub" >With Algebra Core, enjoy our free software and start learning now!</v-card-subtitle>
-      </v-img>
-      </v-card>
+  <v-row>
+    <v-col cols="12"  xs="12" >
+        <v-card>
+          <v-img contain class="heroImg white--text align-end"  src="/assets/images/laptop-typing.jpg" gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)"
+          alt="heroImage">
+            <v-card-title class="heroTitle" >LEARN ALGEBRA FROM HOME</v-card-title>
+           <v-card-subtitle class="heroSub" >With Algebra Core, enjoy our free software and start learning now!</v-card-subtitle>
+          </v-img>
+        </v-card>
       </v-col>
-      </v-row>
-</v-col>
+     </v-row>
   </v-container>
 
 
   <v-container>
-  <v-col cols="12">
- <v-row justify="center" >
- <v-col xs="8">
-<h1 class="pa-2" >Virtues of Algebra From Home:</h1>
-</v-col>
-</v-row>
-</v-col>
+    <v-row   
+      :align="alignment"
+      :justify="justify">
+      <v-col cols="12" justify="center" align="center">
+        <h1 >Virtues of Algebra From Home:</h1>
+      </v-col>
+    </v-row>
 </v-container>
 
 
-<v-container
->
-<v-row row wrap
->
+<v-container class="textAlign">
+  <v-row row wrap>
+    <v-col cols="12" md="3">
+      <p class="pa-4" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+    </v-col>
 
- <v-col
- cols="12"
-   md="3"
- >
-<p class="pa-8" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
-</v-col>
+    <v-col cols="12" md="3">
+      <p class="pa-4" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+    </v-col> 
 
- <v-col
- cols="12"
-   md="3"
- >
-<p class="pa-8" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
-</v-col>
- <v-col
- cols="12"
-   md="3"
- >
-<p class="pa-8" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
-</v-col>
- <v-col
- cols="12"
-   md="3"
- >
-<p class="pa-8" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
-</v-col>
-</v-row>
-</v-container>
-
-<v-container>
-<v-row row wrap>
-<v-col
-cols="12"
-md="6"
->
-<v-img class="studentImg" src="/assets/images/hero-720w.jpg"></v-img>
-</v-col>
-<v-col
-cols="6"
->
-
-<h2 class="px-8">Lorem ipsum</h2>
-<h3 class="px-8">Lorem ipsum dolor sit amet, consectetuer adipiscing</h3>
-<p class=" paragraph col-10 pa-xs-3" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque eleifend donec pretium vulputate sapien nec sagittis. Ut sem viverra aliquet eget. Sagittis id consectetur purus ut faucibus pulvinar. Pellentesque pulvinar pellentesque habitant morbi tristique senectus. Amet est placerat in egestas erat imperdiet sed euismod.</p>
-</v-col>
-</v-row>
-</v-container>
-
-<v-container>
-<v-row>
-<v-col
-cols="6"
->
-<h1 class="pa-6" >Lasting Learning</h1>
-<h3 class="pa-4" >Find out how Algebra From Home has helped others learn!</h3>
-</v-col>
-</v-row>
-</v-container>
-
-<v-container>
-<v-row>
-<v-col
-cols="12"
->
-<v-card>
-<v-img class="studentImg" src="/assets/images/hero-720w.jpg"></v-img>
-</v-card>
-</v-col>
-</v-row>
-</v-container>
-
-
-<v-container>
-<v-row>
-<v-col
-cols="12"
->
-<h1 class="pa-4" >Customer Stories</h1>
-</v-col>
-<v-col
-cols="12"
->
-        <v-slide-group
-      v-model="model"
-      class="pa-4"
-      center-active
-      show-arrows
-    >
-      <v-slide-item
-        v-for="n in 15"
-        :key="n"
-        v-slot:default="{ active, toggle }"
-      >
-        <v-card
-          :color="active ? 'primary' : 'grey lighten-1'"
-          class="ma-4"
-          height="200"
-          width="375"
-          @click="toggle"
-        >
-          <v-row
-            class="fill-height"
-            align="center"
-            justify="center"
-          >
-          <v-img 
-          height="200"
-          width="350"
-          class="studentImg" contain src="/assets/images/hero-720w.jpg"></v-img>
-            <v-scale-transition>
-              <v-icon
-                v-if="active"
-                color="white"
-                size="48"
-                v-text="'mdi-close-circle-outline'"
-              ></v-icon>
-            </v-scale-transition>
-          </v-row>
-        </v-card>
-      </v-slide-item>
-    </v-slide-group>
+      <v-col cols="12" md="3">
+      <p class="pa-4" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+    </v-col>
+    <v-col cols="12" md="3">
+      <p class="pa-4" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
     </v-col>
   </v-row>
-  </v-container>
+</v-container>
+
+<v-container>
+  <v-row row wrap>
+    <v-col cols="12" md="6">
+      <v-img class="studentImg" src="/assets/images/hero-720w.jpg" gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)"></v-img>
+    </v-col>
+
+    <v-col cols="12" md="6">
+      <h2 class="px-8">Lorem ipsum</h2>
+      <h3 class="px-8">Lorem ipsum dolor sit amet, consectetuer adipiscing</h3>
+      <p class=" paragraph col-10 pa-xs-3" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque eleifend donec pretium vulputate sapien nec sagittis. Ut sem viverra aliquet eget. Sagittis id consectetur purus ut faucibus pulvinar. Pellentesque pulvinar pellentesque habitant morbi tristique senectus. Amet est placerat in egestas erat imperdiet sed euismod.</p>
+    </v-col>
+  </v-row>
+</v-container>
+
+<v-container>
+  <v-row>
+    <v-col cols="12">
+      <h1 class="pa-6" >Lasting Learning</h1>
+      <h3 class="pa-4" >Find out how Algebra From Home has helped others learn!</h3>
+    </v-col>
+  </v-row>
+</v-container>
+
+<v-container>
+  <v-row>
+    <v-col cols="12">
+      <v-card>
+        <v-img class="studentImg" src="/assets/images/boy-math.jpg"  gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)"></v-img>
+      </v-card>
+    </v-col>
+  </v-row>
+</v-container>
+
+
+<v-container>
+  <v-row>
+    <v-col cols="12" md="4">
+      <h1 class="pa-4" >Customer Stories</h1>
+    </v-col>
+    <v-col cols="12" md="8">
+      <div class="slidesBack">
+      <v-slide-group
+      v-model="model">
+        <v-slide-item
+          v-for="(slide, i) in slides"
+          :key="i"
+          v-slot:default="{ active, toggle }">
+          
+          <v-card
+            :color="white"
+            class="ma-4"
+            height="200"
+            width="375"
+            @click="toggle">
+          
+            <v-row
+              class="fill-height pa-6 slidesText"
+              align="center"
+              justify="center">
+              {{ slide }} 
+                <v-scale-transition>
+                  <v-icon
+                    v-if="active"
+                    color="purple lighten-3"
+                    size="48"
+                    v-text="'mdi-close-circle-outline'"
+                  ></v-icon>
+                </v-scale-transition>
+            </v-row>
+          </v-card>
+        </v-slide-item>
+      </v-slide-group>
+      </div>
+    </v-col>
+  </v-row>
+</v-container>
   
-  </v-layout>
+</v-layout>
+</div>
 </template>
 
 <script>
@@ -170,12 +135,13 @@ cols="12"
 import newAccount from '../components/NewAccount'
 import Header from '../components/Header'
 
+
 export default {
   name: 'App',
   components: {
  /*    'app-login' : login, */
     'app-newAccount' : newAccount,
-    Header
+    'app-header' : Header
   },
 
    data: () => ({
@@ -196,6 +162,13 @@ export default {
           'space-around',
           'space-between',
         ],
+        slides: [
+          'My son had the best experience using FLC to learn algebra. -Margaret',
+          'I loved using FLC to learn algebra. It was so helpful and I was able to pick it up really quick. -John',
+          'Using FLC, I was able to pick up Algebra really fast. This app was so helpful. -Joel',
+          'I homeschool my kids and FLC was so helpful to teach my kids algebra. -Jolene',
+          'FLC is the best app! using it to learn algebra is so easy! -Margot',
+        ],
         justify: 'center',
       
     }),
@@ -205,8 +178,10 @@ export default {
 
 <style scoped>
 h1 {
-  text-align: center;
+  font-size: 36px;
+
 }
+
 
 .heroImg {
   max-width: 100vw;
@@ -222,5 +197,11 @@ h1 {
 p { font-size: 16px; padding: 10px; }
 .paragraph {
   max-width: 100vw;
+}
+.homeLayout {
+  width: 100vw;
+}
+.textAlign {
+  text-align: center;
 }
 </style>

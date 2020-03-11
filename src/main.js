@@ -5,10 +5,12 @@ import vuetify from './plugins/vuetify'
 import Vuelidate from 'vuelidate'
 
 
+
 import { routes } from './routes'
 
 Vue.use(VueRouter);
 Vue.use(Vuelidate)
+
 
 const router = new VueRouter({
     routes,
