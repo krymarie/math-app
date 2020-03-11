@@ -2,7 +2,9 @@
   <v-row justify="end">
     <v-dialog v-model="dialog" persistent max-width="80%" overlay-opacity=".85">
       <template v-slot:activator="{ on }">
-        <v-btn color="#a61d36ff" dark rounded v-on="on">Create Free Account</v-btn>
+        <v-btn color="#a61d36ff" dark rounded v-on="on"
+          >Create Free Account</v-btn
+        >
       </template>
       <!--  <div class="close">
        <v-btn color="#fff" text @click="dialog = false"> <v-icon>fas fa-times</v-icon></v-btn>
@@ -14,7 +16,10 @@
           </v-btn>
 
           <div class="layout">
-            <v-img class="logo" src="/assets/images/FLC-Logo-Large-2b.png"></v-img>
+            <v-img
+              class="logo"
+              src="/assets/images/FLC-Logo-Large-2b.png"
+            ></v-img>
           </div>
           <v-card-title>
             <h3 class="headline">Create an account</h3>
@@ -22,8 +27,16 @@
           <v-card-text>
             <v-container class="containerLayout">
               <v-row>
-                <v-btn color="#1b74bcff" tile dark block @click="dialog = false" class="facebook">
-                  <v-icon class="iconFacebook">fab fa-facebook-f</v-icon>Sign Up with FaceBook
+                <v-btn
+                  color="#1b74bcff"
+                  tile
+                  dark
+                  block
+                  @click="dialog = false"
+                  class="facebook"
+                >
+                  <v-icon class="iconFacebook">fab fa-facebook-f</v-icon>Sign Up
+                  with FaceBook
                 </v-btn>
 
                 <p>-- or --</p>
@@ -70,7 +83,8 @@
                   class="started"
                   type="submit"
                   :disabled="$v.$invalid"
-                >Get Started</v-btn>
+                  >Get Started</v-btn
+                >
 
                 <h3 class="headline">
                   Already have an account?
@@ -90,7 +104,6 @@
     </v-dialog>
   </v-row>
 </template>
-
 
 <script>
 import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
@@ -118,8 +131,8 @@ export default {
   validations: {
     email: {
       required,
-      email,
-      unique: value => {}
+      email
+      // unique: value => {}
     },
     password: {
       required,
