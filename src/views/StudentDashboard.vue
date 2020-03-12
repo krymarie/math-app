@@ -12,7 +12,11 @@
         style="border: 2px solid red"
       >-->
       <v-list style="width: 40px;">
-        <v-list-tile v-for="(menuItem, key) in sideMenu" :key="key" style="display: flex;">
+        <v-list-tile
+          v-for="(menuItem, key) in sideMenu"
+          :key="key"
+          style="display: flex;"
+        >
           <v-list-tile-action>
             <v-icon>{{ menuItem.icon }}</v-icon>
           </v-list-tile-action>
@@ -45,8 +49,11 @@
           <v-stepper-content step="1">
             <v-btn color="primary" href="/lessondashboard">Begin Unit 1</v-btn>
             <v-btn text @click="e6 = 2">SKIP FOR DEV ONLY</v-btn>
-            <!-- This button and functionality will need to be stored in LessonDashboard added to end of unit HTML -->
-            <v-btn text @click="updateProgressPercentage">Update Unit Progress Test</v-btn>
+            <!-- This button and functionality will need to be stored in LessonDashboard added to end of unit HTML 
+             it will need to first update the currentUnit then redirect back to studentDashboard whil updating-->
+            <v-btn text @click="updateUnitProgressPercentage"
+              >Update Unit Progress Test</v-btn
+            >
           </v-stepper-content>
 
           <v-stepper-step :complete="e6 > 2" step="2">Unit 2</v-stepper-step>
@@ -130,7 +137,7 @@ export default {
   },
 
   methods: {
-    updateProgressPercentage() {
+    updateUnitProgressPercentage() {
       // let unitIncrement = (this.currentUnit / this.totalUnits) * 100;
       let unitIncrement = 100 / this.totalUnits; //gets increment percentage
       this.progress = this.progress + unitIncrement; //update progress donut complete percentage
