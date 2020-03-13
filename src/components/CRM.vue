@@ -6,8 +6,8 @@
           </v-flex>
           <!-- <v-flex xs12="xs12" md12="md12" lg12="lg12"> -->
           <v-flex xs12="xs12">
-            <v-layout wrap="wrap">
-                  <v-flex v-for="stat in stats" xs6="xs6"> <!-- should render multiple time for multiple rows -->
+            <v-layout wrap="wrap">   
+                  <v-flex v-for="stat in stats" :key="stat.number" xs6="xs6"> <!-- should render multiple time for multiple rows -->
                   <v-card class="text-xs-center" height="100%">
                     <v-card-text>
                       <div class="display-1 mb-2">{{ stat.number }}</div>{{ stat.label }}

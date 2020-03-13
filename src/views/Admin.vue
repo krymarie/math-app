@@ -1,3 +1,4 @@
+/* eslint-disable vue/valid-v-on */
 <template>
   <div>
 
@@ -15,7 +16,8 @@
       <v-toolbar class="blue darken-3">
         <!-- <router-view></router-view> -->
         <v-list>
-          <v-list-tile @click="">
+          // eslint-disable-next-line vue/valid-v-on
+          <v-list-tile >
             <v-list-tile-content><v-list-tile-title.title class=v-icon.mr-2 home>FLC Account Manager</v-list-tile-title.title>
               <v-icon>mdi-mouse</v-icon>
             </v-list-tile-content>
@@ -26,7 +28,8 @@
       <!-- Look here to wee where the css is breaking could be one missig tag from when i transfered it from codePen -->
       <v-list>
         <!-- @click is here waiting for me to add the logic that will updat wich mainMenu item is slected css and routes -->
-        <v-list-tile v-for="(title, icon) in mainMenu" @click="">
+        // eslint-disable-next-line vue/valid-v-for
+        <v-list-tile v-for="(title, icon) in mainMenu" :key="icon">
           
           <v-list-tile-action>
             <v-icon> {{ icon }}</v-icon>
@@ -62,11 +65,11 @@
           <v-icon>keyboard_arrow_down</v-icon>
         </v-btn>
         <v-list>
-          <v-list-tile @click="">
+          <v-list-tile @click="placeholder">
             <v-icon class="mr-2">settings</v-icon>
             <v-list-tile-title>Settings</v-list-tile-title>
           </v-list-tile>
-          <v-list-tile @click="">
+          <v-list-tile @click="placeholder">
             <v-icon class="mr-2">exit_to_app</v-icon>
             <v-list-tile-title>Logout</v-list-tile-title>
           </v-list-tile>
@@ -88,6 +91,7 @@
 import CRM from '../components/CRM';
 import LogInModal from '../components/LogInModal';
 import Header from '../components/Header';
+// eslint-disable-next-line no-unused-vars
 import Vue from 'vue';//check this since i moved everything around
 
 export default {

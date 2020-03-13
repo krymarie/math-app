@@ -105,7 +105,6 @@
 
 <script>
 
-import axios from 'axios' 
 import { required, minLength, email, } from 'vuelidate/lib/validators'
 
   export default {
@@ -147,51 +146,8 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
          minLength: minLength(8)
        },
        User: '',
-   },
-   methods:{
-    logIN(email, password) {
-      const graphqlQuery = {
-        query: `
-          {
-            login(email:"${email}", password: "${password}){
-              token
-              userId
-            }
-          }
-        `
-      }
-        return axios.POST('http://localhost:8000/graphql',
-        {
-       /*    method: 'Post',
-          headers: {
-            'Content-Type': 'application/json'
-          }, */
-          body: JSON.stringify(graphqlQuery)
-        })
-            .then(response =>{
-              if (response.errors && response.errors[0].status === 422){
-                throw new Error(
-                  "Validation has failed.  Email is already being used"
-                )
-              }
-              if (response.errors){
-                throw new Error("User login has failed")
-              }
-              this.setState({
-                isAuth: true,
-                token:response.data.login.token,
-                authLoading: false,
-                userId: response.userId
-              })
-              localStorage.setItem('token', response.token)
-              localStorage.setItem('userId', response.userID)
-            // eslint-disable-next-line no-console
-            }).catch(error => console.log(error))
-        }
-  } 
-
+   }
   }
-
 </script>
 
 <style scoped>
@@ -234,16 +190,6 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
 .containerLayout {
   width:80%;
 }
-
-.facebook{
-  display: flex;
-  justify-content:space-between;
-  margin: 0 0 8% 0;
-}
-
-.iconFacebook{
-  width:5%;
-} 
 
 .started{
   margin-top:8%;

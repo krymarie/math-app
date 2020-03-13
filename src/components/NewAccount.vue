@@ -5,9 +5,7 @@
       <template v-slot:activator="{ on }">
         <v-btn  color="#a61d36ff"  dark rounded v-on="on">Create Free Account</v-btn>
       </template>
-     <!--  <div class="close">
-       <v-btn color="#fff" text @click="dialog = false"> <v-icon>fas fa-times</v-icon></v-btn>
-      </div> -->
+ 
     <div class="layoutDialog">
       <v-card class="layoutCard">
        <v-btn color="#6d6e71"   text @click="dialog = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>
@@ -25,13 +23,9 @@
           <v-container class="containerLayout">
             <v-row>
 
-<ApolloMutation
-:mutation="require('../graphql/newAccount.gql')"
-:variables="{email, password}"
-@done="createAccount"
->
-    <template v-slot="{mutate}">
-      <form v-on:submit.prevent=" mutate()">
+
+    <template >
+      <form v-on:submit.prevent>
                <v-text-field
                class="infomation" 
                @blur="$v.email.$touch()"
@@ -70,10 +64,8 @@
 
    </form>
       </template>
-    </ApolloMutation>
 
-
-              <v-btn  color="#a61d36ff"  tile  block @click="dialog = false, mutate()" class="started" type="submit" :disabled="$v.$invalid" to="/maindashboard">Get Started</v-btn>
+              <v-btn  color="#a61d36ff"  tile  block @click="dialog = false, newAccount()" class="started" type="submit" :disabled="$v.$invalid" to="/maindashboard">Get Started</v-btn>
 
               <h4 class="headline">  Already have an account?   <app-login class="login"/></h4>
        
@@ -96,7 +88,6 @@
 
 <script>
  
-import gql from 'graphql-tag'
 import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
 import login from '../components/Login'
 
@@ -140,8 +131,18 @@ import login from '../components/Login'
         sameAs: sameAs('password')
        }
    },
-
- 
+/* methods: {
+  newAccount() {
+    this.$apollo.mutate({
+      // Query
+      mutation: gql`creation ($email: String!,$password: String!) {
+    createUser(userInput: {email: "$email", password: "$password"}) {
+    email
+    password
+    _id
+  }
+      }`, */
+    
  }
 
 </script>
@@ -186,16 +187,6 @@ import login from '../components/Login'
 .containerLayout {
   width:80%;
 }
-
-.facebook{
-  display: flex;
-  justify-content:space-between;
-  margin: 0 0 4% 0;
-}
-
-.iconFacebook{
-  width:5%;
-} 
 
 .started{
   margin-top:6%;

@@ -3,7 +3,7 @@ import VueApollo from 'vue-apollo';
 import {
   createApolloClient,
   restartWebsockets
-} from 'vue-cli-plugin-apollo/graphql-client';
+} from 'vue-cli-plugin-apollo';
 
 // Install the vue plugin
 Vue.use(VueApollo);
