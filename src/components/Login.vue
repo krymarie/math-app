@@ -10,7 +10,7 @@
       </div> -->
     <div class="layoutDialog">
       <v-card class="layoutCard">
-       <v-btn  color="#a61d36ff"  text @click="dialog = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>
+       <v-btn color="#6d6e71"   text @click="dialog = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>
           
         <div class="layout">
         <v-img
@@ -48,7 +48,6 @@
               ></v-text-field>
             
             <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="logIN()" value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
-              
                 <h3 class="headline"> 
                   <v-btn
                   text

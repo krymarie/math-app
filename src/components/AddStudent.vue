@@ -44,6 +44,7 @@
   export default {
     data: () => ({
       dialog: false,
+      name: ""
     }),
   }
 </script>
