@@ -1,0 +1,51 @@
+  
+<template>
+    <v-footer padless class="back">
+        <hr class="line">
+            
+            <h5>    &copy; {{ new Date().getFullYear() }}  FAMILY LITERACY CENTERS </h5>
+            <p class="contact">Customer Support</p>
+            <p class="contact">+1 (800) 580-4275</p>
+            <p class="contact bottom">Deanna Weierholt, Reading Director, email: dgreen@flcinc.org </p>
+    </v-footer>
+</template>
+
+<script>
+export default {
+    
+}
+</script>
+
+<style scoped>
+.back{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.line{
+    border: 1px solid #1b74bcff;
+  border-radius: 5px;
+  width: 95%;
+
+}
+
+h5{
+    padding-top: 2%;
+    padding-bottom: 1%;
+}
+p {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.bottom{
+    padding-bottom: 2%;
+}
+
+.contact{
+    display: block;
+    color:#a61d36ff;
+}
+</style>

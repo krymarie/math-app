@@ -27,19 +27,6 @@
           <v-card-text>
             <v-container class="containerLayout">
               <v-row>
-                <v-btn
-                  color="#1b74bcff"
-                  tile
-                  dark
-                  block
-                  @click="dialog = false"
-                  class="facebook"
-                >
-                  <v-icon class="iconFacebook">fab fa-facebook-f</v-icon>Sign Up
-                  with FaceBook
-                </v-btn>
-
-                <p>-- or --</p>
 
                 <v-text-field
                   class="infomation"
@@ -75,21 +62,9 @@
                   counter
                   @click:append="show1 = !show1"
                 ></v-text-field>
-                <v-btn
-                  color="#a61d36ff"
-                  tile
-                  block
-                  @click="dialog = false"
-                  class="started"
-                  type="submit"
-                  :disabled="$v.$invalid"
-                  >Get Started</v-btn
-                >
+             <v-btn  color="#a61d36ff"  tile  block @click="dialog = false, newAccount()" class="started" type="submit" :disabled="$v.$invalid" to="/maindashboard">Get Started</v-btn>
 
-                <h3 class="headline">
-                  Already have an account?
-                  <v-btn text color="primary" type="submit">Login</v-btn>
-                </h3>
+                  <h4 class="headline">  Already have an account?   <app-login class="login"/></h4>
               </v-row>
             </v-container>
           </v-card-text>

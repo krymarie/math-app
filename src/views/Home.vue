@@ -130,7 +130,7 @@
     </v-col>
   </v-row>
 </v-container>
-  
+  <app-footer></app-footer>
 </v-layout>
 </template>
 
@@ -138,6 +138,7 @@
 /* import login from '../components/Login' */
 import newAccount from '../components/NewAccount'
 import Header from '../components/Header'
+import Footer from '../components/footer'
 
 
 export default {
@@ -145,7 +146,8 @@ export default {
   components: {
  /*    'app-login' : login, */
     'app-newAccount' : newAccount,
-    'app-header' : Header
+    'app-header' : Header,
+    'app-footer': Footer
   },
 
    data: () => ({
