@@ -1,9 +1,8 @@
 <template>
     <v-container class="body border">
       
-      <Header/>
-      <app-newAccount class="new-account"/>
-    
+      <app-header/>
+     
 
  
         <h1> Oops! | 404 </h1>
@@ -17,20 +16,19 @@
           <v-btn  color= "#1b74bcff" outlined rounded v-on="on" class="buttonRow">Contact Us</v-btn>
         </div>
           
+          <app-footer/>
   </v-container>
 </template>
 
 <script>
-/* import login from '../components/Login' */
-import newAccount from '../components/NewAccount'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 export default {
   name: 'App',
   components: {
- 
-    'app-newAccount' : newAccount,
-    Header
+  'app-header' : Header,
+    'app-footer': Footer
   },
 
   data: () => ({
