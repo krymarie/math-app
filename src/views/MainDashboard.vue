@@ -11,11 +11,7 @@
             <StudentCard :options="student" />
           </div>
           <!-- TODO: add function to open Add Student Modal -->
-          <StudentCard
-            :options="addStudent"
-            class="addStudent"
-            @click="openAddStudenModal"
-          />
+        <AddStudent/>
         </npv-flex>
       </v-layout>
     </v-container>
@@ -25,12 +21,14 @@
 <script>
 import Header from "../components/Header";
 import StudentCard from "../components/StudentCard";
+import AddStudent from "../components/AddStudent"
 
 export default {
   name: "App",
   components: {
     Header,
-    StudentCard
+    StudentCard,
+    AddStudent
   },
 
   data() {

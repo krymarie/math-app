@@ -22,18 +22,15 @@
         <v-card-text>
           <v-container class="containerLayout">
             <v-row>
-
-    
-              <p>-- or --</p>
-
                <v-text-field
                 class="infomation" 
                 @blur="$v.email.$touch()"
                 v-model.lazy="email"
                 :rules="emailRules"
-                label="E-mail"
+                label="Email"
                 required
                 type="email"
+                id="email"
                ></v-text-field>
  
                <v-text-field                        
@@ -45,12 +42,12 @@
                   name="password"
                   label="Enter Password"
                   hint="At least 8 characters"
+                  id="password"
                   counter
                   @click:append="show = !show"
               ></v-text-field>
             
-            <v-btn  color="#a61d36ff"  tile  block class="started" type="submit" @click="onSubmit()" >Login</v-btn>
-              
+            <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="logIN()" value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
                 <h3 class="headline"> 
                   <v-btn
                   text
@@ -78,11 +75,11 @@
                       @blur="$v.recoverEmail.$touch()"
                       v-model.lazy="recoverEmail"
                       :rules="recoverEmail"
-                      label="E-mail"
+                      label="Email"
                       required
                       type="email"
                     ></v-text-field>
-                     <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit"  >Recover Password</v-btn>
+                     <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit">Recover Password</v-btn>
                   </v-card-text>
          
           </v-card>
@@ -107,19 +104,16 @@
 
 <script>
 
-
 import { required, minLength, email, } from 'vuelidate/lib/validators'
 
   export default {
-   components: {
- /*    'app-login' : login, */
 
-  }, 
     data: () => ({
       show1: '',
       show: '',
       dialog: false,
       dialog2: false,
+      token: "",
       email: '',
       emailRules: [
         v => !!v || 'E-mail is required',
@@ -150,11 +144,9 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
          required,
          minLength: minLength(8)
        },
-      
-   },
-
+       User: '',
+   }
   }
-
 </script>
 
 <style scoped>
@@ -197,16 +189,6 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
 .containerLayout {
   width:80%;
 }
-
-.facebook{
-  display: flex;
-  justify-content:space-between;
-  margin: 0 0 8% 0;
-}
-
-.iconFacebook{
-  width:5%;
-} 
 
 .started{
   margin-top:8%;

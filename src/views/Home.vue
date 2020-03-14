@@ -2,7 +2,7 @@
 
 <v-layout fluid row wrap>
   <app-header></app-header>
-      <app-newAccount class="new-account"> </app-newAccount>
+    
 
 <v-container class="mx-auto" no-gutters>
   <v-row>
@@ -10,6 +10,7 @@
         <v-card>
           <v-img contain class="heroImg white--text align-end"  src="/assets/images/laptop-typing.jpg" gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)"
           alt="heroImage">
+            <app-newAccount class="new-account"> </app-newAccount>
             <v-card-title class="heroTitle" >LEARN ALGEBRA FROM HOME</v-card-title>
            <v-card-subtitle class="heroSub" >With Algebra Core, enjoy our free software and start learning now!</v-card-subtitle>
           </v-img>
@@ -130,7 +131,7 @@
     </v-col>
   </v-row>
 </v-container>
-  
+  <app-footer></app-footer>
 </v-layout>
 </template>
 
@@ -138,6 +139,7 @@
 /* import login from '../components/Login' */
 import newAccount from '../components/NewAccount'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 
 export default {
@@ -145,7 +147,8 @@ export default {
   components: {
  /*    'app-login' : login, */
     'app-newAccount' : newAccount,
-    'app-header' : Header
+    'app-header' : Header,
+    'app-footer': Footer
   },
 
    data: () => ({

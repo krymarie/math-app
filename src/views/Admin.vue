@@ -1,3 +1,4 @@
+/* eslint-disable vue/valid-v-on */
 <template>
   <div>
     <Header />
