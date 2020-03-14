@@ -1,5 +1,5 @@
 <template>
-<div class="homeLayout">
+
 <v-layout fluid row wrap>
   <app-header></app-header>
       <app-newAccount class="new-account"> </app-newAccount>
@@ -30,21 +30,21 @@
 </v-container>
 
 
-<v-container class="textAlign">
+<v-container>
   <v-row row wrap>
     <v-col cols="12" md="3">
-      <p class="pa-4" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+      <p class="pa-8" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
     </v-col>
 
     <v-col cols="12" md="3">
-      <p class="pa-4" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+      <p class="pa-8" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
     </v-col> 
 
       <v-col cols="12" md="3">
-      <p class="pa-4" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+      <p class="pa-8" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
     </v-col>
     <v-col cols="12" md="3">
-      <p class="pa-4" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+      <p class="pa-8" >Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
     </v-col>
   </v-row>
 </v-container>
@@ -55,7 +55,7 @@
       <v-img class="studentImg" src="/assets/images/hero-720w.jpg" gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)"></v-img>
     </v-col>
 
-    <v-col cols="12" md="6">
+    <v-col cols="6">
       <h2 class="px-8">Lorem ipsum</h2>
       <h3 class="px-8">Lorem ipsum dolor sit amet, consectetuer adipiscing</h3>
       <p class=" paragraph col-10 pa-xs-3" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque eleifend donec pretium vulputate sapien nec sagittis. Ut sem viverra aliquet eget. Sagittis id consectetur purus ut faucibus pulvinar. Pellentesque pulvinar pellentesque habitant morbi tristique senectus. Amet est placerat in egestas erat imperdiet sed euismod.</p>
@@ -65,7 +65,7 @@
 
 <v-container>
   <v-row>
-    <v-col cols="12">
+    <v-col cols="6">
       <h1 class="pa-6" >Lasting Learning</h1>
       <h3 class="pa-4" >Find out how Algebra From Home has helped others learn!</h3>
     </v-col>
@@ -85,34 +85,40 @@
 
 <v-container>
   <v-row>
-    <v-col cols="12" md="4">
+    <v-col cols="12">
       <h1 class="pa-4" >Customer Stories</h1>
     </v-col>
-    <v-col cols="12" md="8">
-      <div class="slidesBack">
+    
+    <v-col cols="12">
       <v-slide-group
-      v-model="model">
+      v-model="model"
+      class="pa-4"
+      center-active
+      show-arrows>
         <v-slide-item
-          v-for="(slide, i) in slides"
-          :key="i"
+          v-for="n in 15"
+          :key="n"
           v-slot:default="{ active, toggle }">
           
           <v-card
-            :color="white"
+            :color="active ? 'primary' : 'grey lighten-1'"
             class="ma-4"
             height="200"
             width="375"
             @click="toggle">
           
             <v-row
-              class="fill-height pa-6 slidesText"
+              class="fill-height"
               align="center"
               justify="center">
-              {{ slide }} 
+              <v-img 
+              height="200"
+              width="350"
+              class="studentImg" contain src="/assets/images/math-paper.jpg"  gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)" ></v-img>
                 <v-scale-transition>
                   <v-icon
                     v-if="active"
-                    color="purple lighten-3"
+                    color="white"
                     size="48"
                     v-text="'mdi-close-circle-outline'"
                   ></v-icon>
@@ -121,13 +127,11 @@
           </v-card>
         </v-slide-item>
       </v-slide-group>
-      </div>
     </v-col>
   </v-row>
 </v-container>
   
 </v-layout>
-</div>
 </template>
 
 <script>
@@ -162,13 +166,6 @@ export default {
           'space-around',
           'space-between',
         ],
-        slides: [
-          'My son had the best experience using FLC to learn algebra. -Margaret',
-          'I loved using FLC to learn algebra. It was so helpful and I was able to pick it up really quick. -John',
-          'Using FLC, I was able to pick up Algebra really fast. This app was so helpful. -Joel',
-          'I homeschool my kids and FLC was so helpful to teach my kids algebra. -Jolene',
-          'FLC is the best app! using it to learn algebra is so easy! -Margot',
-        ],
         justify: 'center',
       
     }),
@@ -197,11 +194,5 @@ h1 {
 p { font-size: 16px; padding: 10px; }
 .paragraph {
   max-width: 100vw;
-}
-.homeLayout {
-  width: 100vw;
-}
-.textAlign {
-  text-align: center;
 }
 </style>

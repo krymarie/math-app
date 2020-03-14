@@ -48,29 +48,39 @@
           </v-stepper-step>
 
           <v-stepper-content step="1">
-            <v-card color="grey lighten-1" class="mb-12" height="200px"
-              ><v-btn color="primary" @click="e6 = 2">Continue</v-btn>
+            <v-card color="grey lighten-1" class="mb-12" height="200px">
+              <v-btn color="primary" @click="updateLessonProgressPercentage"
+                >Continue</v-btn
+              >
             </v-card>
           </v-stepper-content>
 
           <v-stepper-step :complete="e6 > 2" step="2">Lesson 2</v-stepper-step>
           <v-stepper-content step="2">
             <v-card color="grey lighten-1" class="mb-12" height="200px"
-              ><v-btn color="primary" @click="e6 = 3">Continue</v-btn></v-card
+              ><v-btn color="primary" @click="updateLessonProgressPercentage"
+                >Continue</v-btn
+              ></v-card
             >
           </v-stepper-content>
 
           <v-stepper-step :complete="e6 > 3" step="3">Lesson 3</v-stepper-step>
           <v-stepper-content step="3">
             <v-card color="grey lighten-1" class="mb-12" height="200px"
-              ><v-btn color="primary" @click="e6 = 4">Continue</v-btn></v-card
+              ><v-btn color="primary" @click="updateLessonProgressPercentage"
+                >Continue</v-btn
+              ></v-card
             >
           </v-stepper-content>
 
-          <v-stepper-step step="4">Lesson 4</v-stepper-step>
+          <v-stepper-step step="4"
+            >Lesson 4 - Last Lesson Example Test</v-stepper-step
+          >
           <v-stepper-content step="4">
             <v-card color="grey lighten-1" class="mb-12" height="200px"
-              ><v-btn color="primary" @click="e6 = 1">Continue</v-btn></v-card
+              ><v-btn color="primary" @click="updateUnitProgress"
+                >Complete Unit and Update Unit Test</v-btn
+              ></v-card
             >
           </v-stepper-content>
           <!--  @click="e6 = 2" set e6 to next unit...update e6 to current Unit and currentLesson...-->
@@ -108,20 +118,31 @@ export default {
           key: "settings"
         }
       ],
-      //student data imported and passed thru
-      studentName: "Cameron P",
-      currentUnit: 1, //set prop to data current_lesson
-      currentLesson: 1, //set prop to data current_lesson
-      progress: 67
+      //student data imported and set in store
+      studentName: "Cameron P", //api
+      totalLessons: 23, //UPDATE HERE IF LESSONS/REVIEWS COUNT CHANGES
+      currentLesson: 1, //pull from api
+      currentUnit: 4,
+      progress: 0 //this is the default used for increment
     };
   },
-
-  // methods: {
-  //   clickToggleDrawer() {
-  //     this.drawer = !this.drawer;
-  //   }
-  // },
-
+  methods: {
+    updateLessonProgressPercentage() {
+      // let unitIncrement = (this.currentUnit / this.totalUnits) * 100;
+      let lessonIncrement = 100 / this.totalLessons; //gets increment percentage
+      this.progress = this.progress + lessonIncrement; //update progress donut complete percentage
+      this.currentLesson = this.currentLesson + 1; //updates current unit locally needs to also update api
+      this.e6 = this.e6 + 1;
+      //also need to update current unit in api once added incase accidental closure...
+    },
+    updateUnitProgress() {
+      this.currentUnit = this.currentUnit + 1; //updates current unit locally need to update api so when page loads it populates correct unit
+      //after currentUnit is updated ink back to student dashboard onload this will pull currentUnit to populate progress
+    }
+    // clickToggleDrawer() {
+    // this.drawer = !this.drawer;
+    //   }
+  },
   components: {
     Header
   }
