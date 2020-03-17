@@ -1,10 +1,11 @@
 <template>
-  <v-row justify="end">
+         <section  v-else>
+        <v-row justify="end">
   
     <v-dialog v-model="dialog" persistent max-width="80%" overlay-opacity=".85">
       <template v-slot:activator="{ on }">
         
-        <v-btn  color="#1b74bcff"  dark rounded v-on="on">Login</v-btn>
+        <v-btn  color="#1b74bcff"  dark rounded v-on="on">Log Out</v-btn>
   
       </template>
      <!--  <div class="close">
@@ -24,7 +25,7 @@
         <v-card-text>
           <v-container class="containerLayout">
             <v-row>
-               <v-text-field
+              <v-text-field
                 class="infomation" 
                 @blur="$v.email.$touch()"
                 v-model.lazy="email"
@@ -35,57 +36,10 @@
                 id="email"
                ></v-text-field>
  
-               <v-text-field                        
-                  v-model="password"
-                  @blur="$v.password.$touch()"
-                  :append-icon="show ? 'visibility' : 'visibility_off'"
-                  :rules="[rules.required, rules.min]"
-                  :type="show ? 'text' : 'password'"
-                  name="password"
-                  label="Enter Password"
-                  hint="At least 8 characters"
-                  id="password"
-                  counter
-                  @click:append="show = !show"
-              ></v-text-field>
             
-            <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="logIN()" value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
-                <h3 class="headline"> 
-                  <v-btn
-                  text
-                    color="primary"
-                          dark
-                          @click="dialog2 = true"
-                  > 
-                   Forgot Password
-                  </v-btn> 
-                </h3>
-                <v-dialog
-                  v-model="dialog2"
-                  max-width="500px"
-                    >
-                    <v-card>
-                         <v-btn color="#6d6e71"   text @click="dialog2 = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>
-                      <v-card-title class="headline" >
-                        Recover Password
-                      </v-card-title>
-                    <v-card-text>
-                      <p class="recovery"> Please enter the email you used when creating an account.</p>
-                  <p class="recovery">We will send you an email with a link to a page where you can create a new password. </p>
-                      <v-text-field
-                      class="infomation" 
-                      @blur="$v.recoverEmail.$touch()"
-                      v-model.lazy="recoverEmail"
-                      :rules="recoverEmail"
-                      label="Email"
-                      required
-                      type="email"
-                    ></v-text-field>
-                     <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit">Recover Password</v-btn>
-                  </v-card-text>
-         
-          </v-card>
-        </v-dialog>
+ <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="logOUT()" value="submit" to="/" >Log out</v-btn>
+               
+            
                 
             </v-row>
           </v-container>
@@ -101,15 +55,10 @@
     </div>
     </v-dialog>
   </v-row>
+     </section>
 </template>
 
-
 <script>
-
-import { required, minLength, email, } from 'vuelidate/lib/validators'
-
-  export default {
-
     data: () => ({
       Login: false,
       show1: '',
@@ -149,14 +98,8 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
        },
        User: '',
    },
-   methods:{
-     logIN: function(){
-       this.Login = true
-     },
-   
-   }
-  }
-</script>
+
+   </script>
 
 <style scoped>
 
