@@ -6,7 +6,7 @@
     <p class="contact">
       <a href="https://flcinc.org/support/">Customer Support</a>
     </p>
-    <p class="contact">+1 (800) 580-4275</p>
+    <p class="contact bottom">+1 (800) 580-4275</p>
   </v-footer>
 </template>
 
