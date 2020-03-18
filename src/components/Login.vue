@@ -1,9 +1,13 @@
 <template>
-  <v-row justify="end">
+<div>
+  <section v-if="Login" >
+  <v-row justify="end" >
   
-    <v-dialog v-model="dialog" persistent max-width="80%" overlay-opacity=".85">
-      <template v-slot:activator="{ on }">
-        <v-btn  color="#1b74bcff"  dark rounded v-on="on">Login</v-btn>
+    <v-dialog v-model="dialog" persistent max-width="80%" overlay-opacity=".85" >
+      <template v-slot:activator="{ on }" >
+        
+        <v-btn  color="#1b74bcff"  dark rounded v-on="on" >Login</v-btn>
+  
       </template>
      <!--  <div class="close">
        <v-btn color="#fff" text @click="dialog = false"> <v-icon>fas fa-times</v-icon></v-btn>
@@ -47,7 +51,7 @@
                   @click:append="show = !show"
               ></v-text-field>
             
-            <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="logIN()" value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
+            <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="Login=false" value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
                 <h3 class="headline"> 
                   <v-btn
                   text
@@ -99,6 +103,64 @@
     </div>
     </v-dialog>
   </v-row>
+  </section>
+   <section v-else >
+        <v-row justify="end" >
+  
+    <v-dialog v-model="dialog3" persistent max-width="80%" overlay-opacity=".85"  >
+      <template v-slot:activator="{ on }" >
+        
+        <v-btn color="#1b74bcff"  dark rounded v-on="on">Log Out</v-btn>
+  
+      </template>
+  
+    <div class="layoutDialog">
+      <v-card class="layoutCard">
+       <v-btn color="#6d6e71"   text @click="dialog = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>
+          
+        <div class="layout">
+        <v-img
+          class="logo"
+          src="/assets/images/FLC-Logo-Large-2b.png"
+        ></v-img>
+        </div>
+     
+        <v-card-text>
+          <v-container class="containerLayout">
+            <v-row>
+              <v-text-field
+                class="infomation" 
+                @blur="$v.email.$touch()"
+                v-model.lazy="email"
+                :rules="emailRules"
+                label="Email"
+                required
+                type="email"
+                id="email"
+               ></v-text-field>
+ 
+            
+ <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="Login = true" value="submit" to="/" >Log out</v-btn>
+               
+            
+                
+            </v-row>
+          </v-container>
+        </v-card-text>
+       </v-card> 
+     
+       <v-img
+          class="image"
+          src="/assets/images/loginWriting.jpg"
+          gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)"
+        ></v-img>
+       
+    </div>
+    </v-dialog>
+  </v-row>
+     </section>
+</div>
+
 </template>
 
 
@@ -109,10 +171,12 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
   export default {
 
     data: () => ({
+      Login: true,
       show1: '',
       show: '',
       dialog: false,
       dialog2: false,
+      dialog3: false,
       token: "",
       email: '',
       emailRules: [
@@ -145,6 +209,15 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
          minLength: minLength(8)
        },
        User: '',
+   },
+   methods:{
+     logIN: function(){
+       this.Login = false
+     },
+    logOUT: function(){
+       this.Login = true
+     }
+   
    }
   }
 </script>
