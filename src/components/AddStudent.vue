@@ -12,7 +12,7 @@
         <v-btn class="AddBtn" color="primary" tile width="131px" height="52px" large dark v-on="on">+ Add</v-btn>
       </template>
   <v-card>
-         <v-btn class="closing" color="blue darken-1" text @click="dialog = false"><v-icon>fas fa-times</v-icon></v-btn>
+         <v-btn class="closing" color="#6d6e71" text @click="dialog = false"><v-icon>fas fa-times</v-icon></v-btn>
         <v-card-title class="headliner">
          
           <span class="headline">New Student</span>
