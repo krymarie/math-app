@@ -2,7 +2,6 @@
   <div class="homeLayout">
     <v-layout fluid row wrap>
       <app-header></app-header>
-      <app-newAccount class="new-account"> </app-newAccount>
 
       <v-container no-gutters col-12>
         <v-row>
@@ -17,6 +16,9 @@
                   <v-card-subtitle class="heroSub white--text"
                                    :elevation="24"
                   >With Algebra Core, enjoy our FREE software and start learning now!</v-card-subtitle>
+                  <div class="btnNewAccount">
+                  <app-newAccount class="new-account justify-center"> </app-newAccount>
+                  </div>
                 </v-img>
               </div>
             </v-card>
@@ -83,6 +85,9 @@
             <h2 class="px-8 midText">Lorem ipsum</h2>
             <h3 class="px-8">Lorem ipsum dolor sit amet, consectetuer adipiscing</h3>
             <p class=" paragraph col-10 pa-xs-3" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque eleifend donec pretium vulputate sapien nec sagittis. Ut sem viverra aliquet eget. Sagittis id consectetur purus ut faucibus pulvinar. Pellentesque pulvinar pellentesque habitant morbi tristique senectus. Amet est placerat in egestas erat imperdiet sed euismod.</p>
+            <div class="getStartedBtn">
+              <app-getStarted class="new-account justify-center"></app-getStarted>
+            </div>
           </v-col>
         </v-row>
       </v-container>
@@ -161,6 +166,7 @@
   import newAccount from '../components/NewAccount'
   import Header from '../components/Header'
   import Footer from '../components/Footer'
+  import getStarted from '../components/GetStarted'
 
 
   export default {
@@ -169,7 +175,8 @@
       /*    'app-login' : login, */
       'app-newAccount' : newAccount,
       'app-header' : Header,
-      'app-footer': Footer
+      'app-footer': Footer,
+      'app-getStarted': getStarted
     },
 
     data: () => ({
@@ -209,7 +216,10 @@
 
   }
   .heroImg {
-    max-width: 100vw;
+    width: 100vw;
+  }
+  .btnNewAccount {
+    padding-top: 15px;
   }
   .studentImg {
     max-width: 100vw;
