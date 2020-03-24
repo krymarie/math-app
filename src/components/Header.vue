@@ -39,9 +39,11 @@
 
 import login from '../components/Login'
 
+
   export default { 
     components: {
         'app-login' : login,
+
     },
     data: () => ({
       
@@ -60,7 +62,7 @@ import login from '../components/Login'
   width: 20%;
 }
   .logo{
-    height: autos;
+    height: auto;
     width: 110px;
   }
   .login{
