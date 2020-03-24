@@ -160,7 +160,7 @@
   /* import login from '../components/Login' */
   import newAccount from '../components/NewAccount'
   import Header from '../components/Header'
-  import Footer from '../components/Footer'
+  import Footer from '../components/Foot'
 
 
   export default {
