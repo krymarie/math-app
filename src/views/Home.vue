@@ -2,7 +2,7 @@
   <div class="homeLayout">
     <v-layout fluid row wrap>
       <app-header></app-header>
-      <app-newAccount class="new-account"> </app-newAccount>
+
 
       <v-container no-gutters col-12>
         <v-row>
@@ -17,6 +17,7 @@
                   <v-card-subtitle class="heroSub white--text"
                                    :elevation="24"
                   >With Algebra Core, enjoy our FREE software and start learning now!</v-card-subtitle>
+                        <app-newAccount class="justify-center new-account"> </app-newAccount>
                 </v-img>
               </div>
             </v-card>
@@ -292,5 +293,9 @@
     .midText {
       margin-top: 40px;
     }
+  }
+
+  .new-account{
+   margin-top: 4%; 
   }
 </style>
