@@ -12,11 +12,7 @@
         style="border: 2px solid red"
       >-->
       <v-list style="width: 40px;">
-        <v-list-tile
-          v-for="(menuItem, key) in sideMenu"
-          :key="key"
-          style="display: flex;"
-        >
+        <v-list-tile v-for="(menuItem, key) in sideMenu" :key="key" style="display: flex;">
           <v-list-tile-action>
             <v-icon>{{ menuItem.icon }}</v-icon>
           </v-list-tile-action>
@@ -26,19 +22,27 @@
       <!-- </v-container> -->
 
       <v-content>
-        <v-img
-          class="avatarImage"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_RduMlXDb9A-mc_msw8SXpfyv5L3pZvZyLKFKYdf1ZTM4zdd&s"
-        />
-        <h1>{{ studentName }}</h1>
-        <h2>Unit {{ currentUnit }}</h2>
-        <v-progress-circular
-          color="rgb(27, 116, 188)"
-          :value="progress"
-          :rotate="-90"
-          :size="150"
-          :width="30"
-        ></v-progress-circular>
+        <div
+          class="donut"
+          style="display: flex; justify-content: flex-end; flex-direction: column;"
+        >
+          <v-progress-circular
+            color="rgb(27, 116, 188)"
+            :value="progress"
+            :rotate="-90"
+            :size="150"
+            :width="30"
+          />
+          <h2 class="currentUnit">Unit {{ currentUnit }}</h2>
+        </div>
+        <div style="display: flex;">
+          <v-img
+            class="avatarImage"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_RduMlXDb9A-mc_msw8SXpfyv5L3pZvZyLKFKYdf1ZTM4zdd&s"
+          />
+          <h1 class="studentName">{{ studentName }}</h1>
+        </div>
+
         <v-stepper v-model="e6" vertical>
           <!-- itterate ofer units available from db with a v-for units as unit... to created these -->
 
@@ -50,10 +54,8 @@
             <v-btn color="primary" href="/lessondashboard">Begin Unit 1</v-btn>
             <v-btn text @click="e6 = 2">SKIP FOR DEV ONLY</v-btn>
             <!-- This button and functionality will need to be stored in LessonDashboard added to end of unit HTML 
-             it will need to first update the currentUnit then redirect back to studentDashboard whil updating-->
-            <v-btn text @click="updateUnitProgressPercentage"
-              >Update Unit Progress Test</v-btn
-            >
+            it will need to first update the currentUnit then redirect back to studentDashboard whil updating-->
+            <v-btn text @click="updateUnitProgressPercentage">Update Unit Progress Test</v-btn>
           </v-stepper-content>
 
           <v-stepper-step :complete="e6 > 2" step="2">Unit 2</v-stepper-step>
@@ -163,4 +165,17 @@ export default {
   max-width: 40px
   max-height: 40px
   border-radius: 50px
+  border: solid 2px red
+.studentName
+  width: 50%
+  padding-left: 15px
+  border: solid 2px red
+.currentUnit
+  width: 30%
+  clear: left
+  border: solid 2px red
+.donut
+  clear: left
+  float: right
+  border: solid 2px red
 </style>
