@@ -1,7 +1,7 @@
 <template>
+  <!-- footer change case senesitive-->
   <v-footer padless class="back">
     <hr class="line" />
-
     <h5>&copy; {{ new Date().getFullYear() }} FAMILY LITERACY CENTERS</h5>
     <p class="contact">
       <a href="https://flcinc.org/support/">Customer Support</a>
