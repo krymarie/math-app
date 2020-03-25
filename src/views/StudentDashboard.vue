@@ -11,10 +11,16 @@
         width="220"
         style="border: 2px solid red"
       >-->
-      <v-list style="width: 40px;">
-        <v-list-tile v-for="(menuItem, key) in sideMenu" :key="key" style="display: flex;">
+      <v-list style="width: 60px; padding-top: 70px; background-color: gray; margin-right: 20px;">
+        <v-list-tile
+          v-for="(menuItem, key) in sideMenu"
+          :key="key"
+          style="display: flex; padding: 0 0 20px 10px; font-color: red;"
+        >
           <v-list-tile-action>
-            <v-icon>{{ menuItem.icon }}</v-icon>
+            <v-icon
+              style="display: flex; padding-bottom: 20px; color: white; font-size: 40px;"
+            >{{ menuItem.icon }}</v-icon>
           </v-list-tile-action>
         </v-list-tile>
       </v-list>
@@ -22,20 +28,7 @@
       <!-- </v-container> -->
 
       <v-content>
-        <div
-          class="donut"
-          style="display: flex; justify-content: flex-end; flex-direction: column;"
-        >
-          <v-progress-circular
-            color="rgb(27, 116, 188)"
-            :value="progress"
-            :rotate="-90"
-            :size="150"
-            :width="30"
-          />
-          <h2 class="currentUnit">Unit {{ currentUnit }}</h2>
-        </div>
-        <div style="display: flex;">
+        <div style="display: flex; padding-top: 20px;">
           <v-img
             class="avatarImage"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_RduMlXDb9A-mc_msw8SXpfyv5L3pZvZyLKFKYdf1ZTM4zdd&s"
@@ -43,52 +36,68 @@
           <h1 class="studentName">{{ studentName }}</h1>
         </div>
 
-        <v-stepper v-model="e6" vertical>
-          <!-- itterate ofer units available from db with a v-for units as unit... to created these -->
+        <div style="padding-top: 20px;">
+          <v-stepper v-model="e6" vertical>
+            <!-- itterate ofer units available from db with a v-for units as unit... to created these -->
 
-          <v-stepper-step :complete="e6 > 1" step="1">
-            Current Unit
-            <small>Unit 1</small>
-          </v-stepper-step>
-          <v-stepper-content step="1">
-            <v-btn color="primary" href="/lessondashboard">Begin Unit 1</v-btn>
-            <v-btn text @click="e6 = 2">SKIP FOR DEV ONLY</v-btn>
-            <!-- This button and functionality will need to be stored in LessonDashboard added to end of unit HTML 
-            it will need to first update the currentUnit then redirect back to studentDashboard whil updating-->
-            <v-btn text @click="updateUnitProgressPercentage">Update Unit Progress Test</v-btn>
-          </v-stepper-content>
+            <v-stepper-step :complete="e6 > 1" step="1">
+              Unit 1
+              <!-- <small>Unit 1</small> -->
+            </v-stepper-step>
+            <v-stepper-content step="1">
+              <v-btn color="primary" href="/lessondashboard">Begin Unit 1</v-btn>
+              <v-btn text @click="updateUnitProgressPercentage">SKIP FOR DEV ONLY</v-btn>
+            </v-stepper-content>
 
-          <v-stepper-step :complete="e6 > 2" step="2">Unit 2</v-stepper-step>
-          <v-stepper-content step="2">
-            <v-btn color="primary" href="/lessondashboard">Begin Unit 2</v-btn>
-            <v-btn text @click="e6 = 3">SKIP FOR DEV ONLY</v-btn>
-          </v-stepper-content>
+            <v-stepper-step :complete="e6 > 2" step="2">Unit 2</v-stepper-step>
+            <v-stepper-content step="2">
+              <v-btn color="primary" href="/lessondashboard">Begin Unit 2</v-btn>
+              <v-btn text @click="updateUnitProgressPercentage">SKIP FOR DEV ONLY</v-btn>
+            </v-stepper-content>
 
-          <v-stepper-step :complete="e6 > 3" step="3">Unit 3</v-stepper-step>
-          <v-stepper-content step="3">
-            <v-btn color="primary" href="/lessondashboard">Begin Unit 3</v-btn>
-            <v-btn text @click="e6 = 4">SKIP FOR DEV ONLY</v-btn>
-          </v-stepper-content>
+            <v-stepper-step :complete="e6 > 3" step="3">Unit 3</v-stepper-step>
+            <v-stepper-content step="3">
+              <v-btn color="primary" href="/lessondashboard">Begin Unit 3</v-btn>
+              <v-btn text @click="updateUnitProgressPercentage">SKIP FOR DEV ONLY</v-btn>
+            </v-stepper-content>
 
-          <v-stepper-step :complete="e6 > 4" step="4">Unit 4</v-stepper-step>
-          <v-stepper-content step="4">
-            <v-btn color="primary" href="/lessondashboard">Begin Unit 4</v-btn>
-            <v-btn text @click="e6 = 5">SKIP FOR DEV ONLY</v-btn>
-          </v-stepper-content>
+            <v-stepper-step :complete="e6 > 4" step="4">Unit 4</v-stepper-step>
+            <v-stepper-content step="4">
+              <v-btn color="primary" href="/lessondashboard">Begin Unit 4</v-btn>
+              <v-btn text @click="updateUnitProgressPercentage">SKIP FOR DEV ONLY</v-btn>
+            </v-stepper-content>
 
-          <v-stepper-step :complete="e6 > 5" step="5">Unit 5</v-stepper-step>
-          <v-stepper-content step="5">
-            <v-btn color="primary" href="/lessondashboard">Begin Unit 5</v-btn>
-            <v-btn text @click="e6 = 6">SKIP FOR DEV ONLY</v-btn>
-          </v-stepper-content>
+            <v-stepper-step :complete="e6 > 5" step="5">Unit 5</v-stepper-step>
+            <v-stepper-content step="5">
+              <v-btn color="primary" href="/lessondashboard">Begin Unit 5</v-btn>
+              <v-btn text @click="updateUnitProgressPercentage">SKIP FOR DEV ONLY</v-btn>
+            </v-stepper-content>
 
-          <v-stepper-step step="6">Unit 6</v-stepper-step>
-          <v-stepper-content step="6">
-            <v-btn color="primary" href="/lessondashboard">Begin Unit 6</v-btn>
-            <v-btn text @click="e6 = 1">SKIP FOR DEV ONLY</v-btn>
-            <!-- change the last @click for last unit load "Congratulations View"" -->
-          </v-stepper-content>
-        </v-stepper>
+            <v-stepper-step step="6">Unit 6</v-stepper-step>
+            <v-stepper-content step="6">
+              <v-btn color="primary" href="/lessondashboard">Begin Unit 6</v-btn>
+              <v-btn text @click="e6 = 1">SKIP FOR DEV ONLY</v-btn>
+              <!-- change the last @click for last unit load "Congratulations View"" -->
+            </v-stepper-content>
+          </v-stepper>
+        </div>
+        <!-- needs to render last since it's absoute on top for unit dashboar/studentdashboard -->
+        <div
+          class="donut"
+          style="display: flex; justify-content: flex-end; flex-direction: column;"
+        >
+          <v-progress-circular
+            style="margin-bottom: 20px;"
+            color="rgb(27, 116, 188)"
+            :value="progress"
+            :rotate="-90"
+            :size="300"
+            :width="60"
+          />
+          <div style="display: inline">
+            <h2 class="currentUnit">Unit Test{{ currentUnit }}</h2>
+          </div>
+        </div>
       </v-content>
     </v-container>
   </v-container>
@@ -144,6 +153,7 @@ export default {
       let unitIncrement = 100 / this.totalUnits; //gets increment percentage
       this.progress = this.progress + unitIncrement; //update progress donut complete percentage
       this.currentUnit = this.currentUnit + 1; //updates current unit locally
+      this.e6 = this.e6 + 1;
       //also need to update current unit in api once added incase accidental closure...
     }
     // clickToggleDrawer() {
@@ -165,17 +175,18 @@ export default {
   max-width: 40px
   max-height: 40px
   border-radius: 50px
-  border: solid 2px red
 .studentName
   width: 50%
   padding-left: 15px
-  border: solid 2px red
-.currentUnit
-  width: 30%
-  clear: left
-  border: solid 2px red
 .donut
+  position: absolute
+  top: 120px
+  right: 50px
+  padding: 20px
   clear: left
   float: right
-  border: solid 2px red
+.currentUnit
+  display: flex
+  justify-content: center
+  clear: left
 </style>
