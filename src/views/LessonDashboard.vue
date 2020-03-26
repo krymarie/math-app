@@ -42,28 +42,37 @@
             <v-stepper-step :complete="e6 > 1" step="1">Lesson 1</v-stepper-step>
 
             <v-stepper-content step="1">
-              <v-card color="grey lighten-1" class="mb-12" height="200px">
+              <v-card color="grey lighten-1" class="mb-12" height="400px">
+                <!-- TODO: needs to be refactored to work in .vue 
+                           this may need to be last if time or next 
+                           semesters project since each lesson will 
+                           need to be refactord -->
+                <!-- <div
+                  id="unitonelessonone_hype_container"
+                  style="margin:auto;position:relative;width:1024px;height:900px;overflow:hidden;"
+                ></div>-->
+                <!-- attempt at lesson conten -->
                 <v-btn color="primary" @click="updateLessonProgressPercentage">Continue</v-btn>
               </v-card>
             </v-stepper-content>
 
             <v-stepper-step :complete="e6 > 2" step="2">Lesson 2</v-stepper-step>
             <v-stepper-content step="2">
-              <v-card color="grey lighten-1" class="mb-12" height="200px">
+              <v-card color="grey lighten-1" class="mb-12" height="400px">
                 <v-btn color="primary" @click="updateLessonProgressPercentage">Continue</v-btn>
               </v-card>
             </v-stepper-content>
 
             <v-stepper-step :complete="e6 > 3" step="3">Lesson 3</v-stepper-step>
             <v-stepper-content step="3">
-              <v-card color="grey lighten-1" class="mb-12" height="200px">
+              <v-card color="grey lighten-1" class="mb-12" height="400px">
                 <v-btn color="primary" @click="updateLessonProgressPercentage">Continue</v-btn>
               </v-card>
             </v-stepper-content>
 
             <v-stepper-step step="4">Lesson 4 - Last Lesson Example Test</v-stepper-step>
             <v-stepper-content step="4">
-              <v-card color="grey lighten-1" class="mb-12" height="200px">
+              <v-card color="grey lighten-1" class="mb-12" height="400px">
                 <v-btn
                   color="primary"
                   @click="updateUnitProgress"
