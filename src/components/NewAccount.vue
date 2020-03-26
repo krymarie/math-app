@@ -63,8 +63,10 @@
                   @click:append="show1 = !show1"
                 ></v-text-field>
              <v-btn  color="#a61d36ff"  tile  block @click="dialog = false, newAccount()" class="started" type="submit" :disabled="$v.$invalid" to="/maindashboard">Get Started</v-btn>
-
-                  <h4 class="headline">  Already have an account?   <app-login class="login"/></h4>
+                <div class="stylingLogin">
+                  <h4 class="headline">  Already have an account?   </h4>
+                  <app-login class="login"/>
+                  </div>
               </v-row>
             </v-container>
           </v-card-text>
@@ -207,6 +209,14 @@ p {
 
 h4 {
   margin: 2% 0;
+}
+.stylingLogin{
+  display: flex;
+  align-items: baseline;
+}
+
+.login{
+  margin-left: 50px;
 }
 
 </style>

@@ -9,9 +9,7 @@
         <v-btn  color="#1b74bcff"  dark rounded v-on="on" >Login</v-btn>
   
       </template>
-     <!--  <div class="close">
-       <v-btn color="#fff" text @click="dialog = false"> <v-icon>fas fa-times</v-icon></v-btn>
-      </div> -->
+ 
     <div class="layoutDialog">
       <v-card class="layoutCard">
        <v-btn color="#6d6e71"   text @click="dialog = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>
@@ -140,7 +138,7 @@
                ></v-text-field>
  
             
- <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="Login = true" value="submit" to="/" >Log out</v-btn>
+ <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="Login=true" value="submit" to="/" >Log out</v-btn>
                
             
                 
@@ -212,12 +210,15 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
    },
    methods:{
      logIN: function(){
-       this.Login = false
+       this.Login = true
+       // eslint-disable-next-line no-console
+       console.log('set to true')    
      },
     logOUT: function(){
-       this.Login = true
+       this.Login = false
+       // eslint-disable-next-line no-console
+       console.log('set to false')
      }
-   
    }
   }
 </script>
