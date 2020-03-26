@@ -10,15 +10,17 @@
         floating="floating"
         width="220"
         style="border: 2px solid red"
-      > -->
-      <v-list style="width: 40px;">
+      >-->
+      <v-list style="width: 70px; padding-top: 20px; background-color: gray; margin-right: 20px;">
         <v-list-tile
           v-for="(menuItem, key) in sideMenu"
           :key="key"
-          style="display: flex;"
+          style="display: flex; padding: 0 0 10px 15px;"
         >
           <v-list-tile-action>
-            <v-icon> {{ menuItem.icon }}</v-icon>
+            <v-icon
+              style="display: flex; padding-bottom: 20px; color: white; font-size: 40px;"
+            >{{ menuItem.icon }}</v-icon>
           </v-list-tile-action>
         </v-list-tile>
       </v-list>
@@ -26,65 +28,69 @@
       <!-- </v-container> -->
 
       <v-content>
-        <v-img
-          class="avatarImage"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_RduMlXDb9A-mc_msw8SXpfyv5L3pZvZyLKFKYdf1ZTM4zdd&s"
-        />
-        <h1>{{ studentName }}</h1>
-        <h2>Unit {{ currentUnit }}</h2>
-        <h2>Lesson {{ currentLesson }}</h2>
-        <v-progress-circular
-          color="rgb(27, 116, 188)"
-          :value="progress"
-          :rotate="-90"
-          :size="150"
-          :width="30"
-        ></v-progress-circular>
-        <v-stepper v-model="e6" vertical>
-          <!-- Itterate over these with v-for and props since each unit had diffren number of lessons -->
-          <v-stepper-step :complete="e6 > 1" step="1">
-            Current Lesson
-            <small>Lesson 1</small>
-          </v-stepper-step>
+        <div style="display: flex; padding-top: 20px;">
+          <v-img
+            class="avatarImage"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_RduMlXDb9A-mc_msw8SXpfyv5L3pZvZyLKFKYdf1ZTM4zdd&s"
+          />
+          <h1 class="studentName">{{ studentName }}</h1>
+        </div>
 
-          <v-stepper-content step="1">
-            <v-card color="grey lighten-1" class="mb-12" height="200px">
-              <v-btn color="primary" @click="updateLessonProgressPercentage"
-                >Continue</v-btn
-              >
-            </v-card>
-          </v-stepper-content>
+        <div style="padding-top: 20px;">
+          <v-stepper v-model="e6" vertical>
+            <!-- Itterate over these with v-for and props since each unit had diffren number of lessons -->
+            <v-stepper-step :complete="e6 > 1" step="1">Lesson 1</v-stepper-step>
 
-          <v-stepper-step :complete="e6 > 2" step="2">Lesson 2</v-stepper-step>
-          <v-stepper-content step="2">
-            <v-card color="grey lighten-1" class="mb-12" height="200px"
-              ><v-btn color="primary" @click="updateLessonProgressPercentage"
-                >Continue</v-btn
-              ></v-card
-            >
-          </v-stepper-content>
+            <v-stepper-content step="1">
+              <v-card color="grey lighten-1" class="mb-12" height="200px">
+                <v-btn color="primary" @click="updateLessonProgressPercentage">Continue</v-btn>
+              </v-card>
+            </v-stepper-content>
 
-          <v-stepper-step :complete="e6 > 3" step="3">Lesson 3</v-stepper-step>
-          <v-stepper-content step="3">
-            <v-card color="grey lighten-1" class="mb-12" height="200px"
-              ><v-btn color="primary" @click="updateLessonProgressPercentage"
-                >Continue</v-btn
-              ></v-card
-            >
-          </v-stepper-content>
+            <v-stepper-step :complete="e6 > 2" step="2">Lesson 2</v-stepper-step>
+            <v-stepper-content step="2">
+              <v-card color="grey lighten-1" class="mb-12" height="200px">
+                <v-btn color="primary" @click="updateLessonProgressPercentage">Continue</v-btn>
+              </v-card>
+            </v-stepper-content>
 
-          <v-stepper-step step="4"
-            >Lesson 4 - Last Lesson Example Test</v-stepper-step
-          >
-          <v-stepper-content step="4">
-            <v-card color="grey lighten-1" class="mb-12" height="200px"
-              ><v-btn color="primary" @click="updateUnitProgress"
-                >Complete Unit and Update Unit Test</v-btn
-              ></v-card
-            >
-          </v-stepper-content>
-          <!--  @click="e6 = 2" set e6 to next unit...update e6 to current Unit and currentLesson...-->
-        </v-stepper>
+            <v-stepper-step :complete="e6 > 3" step="3">Lesson 3</v-stepper-step>
+            <v-stepper-content step="3">
+              <v-card color="grey lighten-1" class="mb-12" height="200px">
+                <v-btn color="primary" @click="updateLessonProgressPercentage">Continue</v-btn>
+              </v-card>
+            </v-stepper-content>
+
+            <v-stepper-step step="4">Lesson 4 - Last Lesson Example Test</v-stepper-step>
+            <v-stepper-content step="4">
+              <v-card color="grey lighten-1" class="mb-12" height="200px">
+                <v-btn
+                  color="primary"
+                  @click="updateUnitProgress"
+                >Complete Unit and Update Unit Test</v-btn>
+              </v-card>
+            </v-stepper-content>
+            <!--  @click="e6 = 2" set e6 to next unit...update e6 to current Unit and currentLesson...-->
+          </v-stepper>
+        </div>
+
+        <!-- needs to render last since it's absoute on top for unit dashboar/studentdashboard -->
+        <div class="donut" style="display: flex; justify-content: flex-end; flex-direction: row;">
+          <h2
+            style="display: inline; padding: 20px"
+            class="currentUnit"
+          >Unit {{ currentUnit }}: Lesson {{ currentLesson }}</h2>
+          <v-progress-circular
+            style="margin-bottom: 10px;"
+            color="rgb(27, 116, 188)"
+            :value="progress"
+            :rotate="-90"
+            :size="60"
+            :width="15"
+          />
+          <div style="display: inline"></div>
+        </div>
+        <!-- end of  donut -->
       </v-content>
     </v-container>
   </v-container>
@@ -154,7 +160,22 @@ export default {
   margin: 1rem
 
 .avatarImage
-    max-width: 40px
-    max-height: 40px
-    border-radius: 50px
+  max-width: 40px
+  max-height: 40px
+  border-radius: 50px
+
+.studentName
+  width: 50%
+  padding-left: 15px
+.donut
+  position: absolute
+  top: 0px
+  right: 1px
+  padding: 10px
+  clear: left
+  float: right
+.currentUnit
+  display: flex
+  justify-content: center
+  clear: left
 </style>

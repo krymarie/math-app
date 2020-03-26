@@ -11,11 +11,11 @@
         width="220"
         style="border: 2px solid red"
       >-->
-      <v-list style="width: 60px; padding-top: 70px; background-color: gray; margin-right: 20px;">
+      <v-list style="width: 70px; padding-top: 20px; background-color: gray; margin-right: 20px;">
         <v-list-tile
           v-for="(menuItem, key) in sideMenu"
           :key="key"
-          style="display: flex; padding: 0 0 20px 10px; font-color: red;"
+          style="display: flex; padding: 0 0 10px 15px;"
         >
           <v-list-tile-action>
             <v-icon
@@ -95,7 +95,7 @@
             :width="60"
           />
           <div style="display: inline">
-            <h2 class="currentUnit">Unit Test{{ currentUnit }}</h2>
+            <h2 class="currentUnit">Unit {{ currentUnit }}</h2>
           </div>
         </div>
       </v-content>
