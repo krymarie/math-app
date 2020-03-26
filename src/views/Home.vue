@@ -162,17 +162,14 @@
 </template>
 
 <script>
-  /* import login from '../components/Login' */
   import newAccount from '../components/NewAccount'
   import Header from '../components/Header'
-  import Footer from '../components/Footer'
+  import Footer from '../components/Foot'
   import getStarted from '../components/GetStarted'
-
 
   export default {
     name: 'App',
-    components: {
-      /*    'app-login' : login, */
+    components: { 
       'app-newAccount' : newAccount,
       'app-header' : Header,
       'app-footer': Footer,
@@ -302,5 +299,9 @@
     .midText {
       margin-top: 40px;
     }
+  }
+
+  .new-account{
+   margin-top: 4%; 
   }
 </style>

@@ -39,9 +39,11 @@
 
 import login from '../components/Login'
 
+
   export default { 
     components: {
         'app-login' : login,
+
     },
     data: () => ({
       
