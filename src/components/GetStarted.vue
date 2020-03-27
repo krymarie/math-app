@@ -2,7 +2,7 @@
     <v-row justify="end">
         <v-dialog v-model="dialog" persistent max-width="80%" overlay-opacity=".85">
             <template v-slot:activator="{ on }">
-                <v-btn color="#1b74bcff" dark rounded v-on="on"
+                <v-btn class="startBtn" color="#1b74bcff" dark rounded v-on="on"
                 >Get Started</v-btn>
             </template>
             <!--  <div class="close">
@@ -218,5 +218,8 @@
 .login{
   margin-left: 50px;
 }
-
+    .startBtn {
+        font-size: 14px;
+        width: 200px;
+    }
 </style>
