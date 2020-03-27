@@ -32,7 +32,7 @@
                   :align="alignment"
                   :justify="justify">
             <v-col cols="12" justify="center" align="center">
-              <h1 >Virtues of Algebra From Home:</h1>
+              <h1 >How Our Program Will Help Your Student Learn:</h1>
             </v-col>
           </v-row>
         </v-container>
@@ -41,21 +41,21 @@
           <v-row row>
             <v-col cols="12" md="3">
               <i class="fas fa-check-circle"></i>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+              <p>Free & easy to follow PreAlgebra tutorials designed to supplement learning of PreAlgebra</p>
             </v-col>
 
             <v-col cols="12" md="3">
               <i class="fas fa-check-circle"></i>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+              <p>Topics and objectives can be easily located to correspond to other textbooks and teaching methods</p>
             </v-col>
 
             <v-col cols="12" md="3">
               <i class="fas fa-check-circle"></i>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+              <p>These materials also help with overcoming student motivation problems as well as understanding learning problems</p>
             </v-col>
             <v-col cols="12" md="3">
               <i class="fas fa-check-circle"></i>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+              <p>Course objectives, and suggestions for how to help your student succeed!</p>
             </v-col>
           </v-row>
         </v-container>
@@ -67,7 +67,7 @@
               <v-col cols="4">
             <v-img class="tabletImg xs=none d-none d-md-flex" src="/assets/images/tabletImg.png"></v-img>
               </v-col>
-              <v-col cols="8">
+              <v-col cols="6">
             <v-img class="desktopImg xs=none d-none d-md-flex" src="/assets/images/desktopImg.png"></v-img>
               </v-col>
             </div>
@@ -82,9 +82,9 @@
           </v-col>
 
           <v-col cols="12" md="6">
-            <h2 class="px-8 midText">Lorem ipsum</h2>
-            <h3 class="px-8">Lorem ipsum dolor sit amet, consectetuer adipiscing</h3>
-            <p class=" paragraph col-10 pa-xs-3" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque eleifend donec pretium vulputate sapien nec sagittis. Ut sem viverra aliquet eget. Sagittis id consectetur purus ut faucibus pulvinar. Pellentesque pulvinar pellentesque habitant morbi tristique senectus. Amet est placerat in egestas erat imperdiet sed euismod.</p>
+            <h2 class="px-8 midText">About Us</h2>
+            <h3 class="px-8">Our Goal is to assist students in their learning journey</h3>
+            <p class=" paragraph col-10 pa-xs-3" >The FLC Algebra program is designed to be an enjoyable introduction to algebra course to help students learn math. Our program allows parents to track progress and uses graphics to allow students a parents to track progress as they make their way through the program.</p>
             <div class="getStartedBtn">
               <app-getStarted class="new-account justify-center"></app-getStarted>
             </div>
@@ -217,6 +217,7 @@
   }
   .btnNewAccount {
     padding-top: 15px;
+    height: 75px;
   }
   .studentImg {
     max-width: 100vw;
@@ -245,7 +246,7 @@
   }
   i {
     color: #1B74BCFF;
-    font-size: 16px;
+    font-size: 20px;
   }
   .imgTxt {
     text-align: center;
@@ -253,8 +254,9 @@
   .screenImages {
     display: flex;
     align-items: flex-end;
-    width: 100vw;
+    width: 80vw;
     justify-content: center;
+    margin: 0 auto;
   }
   .tabletImg{
     width: 30vw;

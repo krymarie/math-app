@@ -2,8 +2,8 @@
   <v-row justify="end">
     <v-dialog v-model="dialog" persistent max-width="80%" overlay-opacity=".85">
       <template v-slot:activator="{ on }">
-        <v-btn color="#a61d36ff" dark rounded v-on="on"
-          >Create Free Account</v-btn
+        <v-btn class="createBtn" color="#a61d36ff" dark rounded v-on="on"
+        ><p>Create Free Account</p></v-btn
         >
       </template>
       <!--  <div class="close">
@@ -218,5 +218,12 @@ h4 {
 .login{
   margin-left: 50px;
 }
-
+.createBtn {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
+.createBtn p {
+  padding: 10px 20px 20px 20px;
+}
 </style>
