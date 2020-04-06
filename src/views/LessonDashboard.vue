@@ -106,7 +106,7 @@
 </template>
 
 <script>
-import Header from "../components/Header";
+import Header from "../components/Headerout";
 
 export default {
   name: "App",

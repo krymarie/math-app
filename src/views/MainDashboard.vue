@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Header from "../components/Header";
+import Header from "../components/Headerout";
 import StudentCard from "../components/StudentCard";
 import AddStudent from "../components/AddStudent"
 
