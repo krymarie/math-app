@@ -1,6 +1,16 @@
 <template>
 <div>
-  <section >
+
+    <template v-slot="{ result: { loading, error, data } }">
+      <!-- Loading -->
+      <div v-if="loading" class="loading apollo">Loading...</div>
+
+      <!-- Error -->
+      <div v-else-if="error" class="error apollo">An error occured</div>
+
+      <!-- Result -->
+      <div v-else-if="data" class="result apollo">
+        <section >
   <v-row justify="end" >
   
     <v-dialog v-model="dialog" persistent max-width="80%" overlay-opacity=".85" >
@@ -49,7 +59,7 @@
                   @click:append="show = !show"
               ></v-text-field>
             
-           <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="Login=false" value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
+           <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @submit.prevent="login"  value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
                  <!-- <h3 class="headline"> 
                   <v-btn
                   text
@@ -103,6 +113,11 @@
   </v-row>
   </section>
   
+      </div>
+
+    </template>
+
+ 
 </div>
 
 </template>
@@ -140,6 +155,8 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
       formData: '',
+      isAuth: false,
+      authLoading: false,
    
     }),
      validations: {
@@ -153,13 +170,51 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
        },
        User: '',
    },
-   methods:{
-     logIN: function(){
-       this.Login = true
+
+/*  methods:{
+     login(email, password){
        // eslint-disable-next-line no-console
-       console.log('set to true')    
+       console.log("logIn function")
+       const graphqlQuery = {
+         query: `
+         query login {
+            login(email: "${email}", password: "${password}") {
+              token
+              userId
+            }
+          }
+         `,
+       
+       }
+        fetch('http://localhost:8000/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(graphqlQuery)
+        })   
+        .then(res => {
+          return res.json()
+        })
+        .then(resData => {
+          if (resData.errors && resData.errors[0].status === 422){
+            throw new Error(
+              "Validation failed."
+            )        
+          }
+          if (resData.errors){
+            throw new Error('User login failed')
+          }
+          // eslint-disable-next-line no-console
+          console.log(resData)
+      })
+      .catch(err => {
+        // eslint-disable-next-line no-console
+        console.log(err);
+     
+        })
      },
-   }
+   }  */
   }
 </script>
 

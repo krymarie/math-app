@@ -37,7 +37,7 @@
  
               
             
-            <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="Logout" value="submit" to="/" :disabled="$v.$invalid">Logout</v-btn>
+            <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="logOUT" value="submit" to="/" :disabled="$v.$invalid">Logout</v-btn>
                
                 
             </v-row>
@@ -91,7 +91,7 @@ import { required, email, } from 'vuelidate/lib/validators'
        User: '',
    },
    methods:{
-    logOUT: function(){
+    logOUT(){
     // eslint-disable-next-line no-console
        console.log('logout')
      }
