@@ -128,17 +128,52 @@ import login from '../components/Login'
         sameAs: sameAs('password')
        }
    },
-/* methods: {
-  newAccount() {
-    this.$apollo.mutate({
-      // Query
-      mutation: gql`creation ($email: String!,$password: String!) {
-    createUser(userInput: {email: "$email", password: "$password"}) {
-    email
-    password
-    _id
-  }
-      }`, */
+ methods:{
+     newAccount(email, password){
+       // eslint-disable-next-line no-console
+       console.log("logIn function")
+       const graphqlQuery = {
+         query: `
+          mutation 
+          createUser(userInput: {email: "${email}", password: "${password}}) {
+            email
+            password
+            _id
+              }
+            {
+              email
+            }
+         `
+       }
+        fetch('http://localhost:8000/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(graphqlQuery)
+        })   
+        .then(res => {
+          return res.json()
+        })
+        .then(resData => {
+          if (resData.errors && resData.errors[0].status === 422){
+            throw new Error(
+              "Validation failed."
+            )        
+          }
+          if (resData.errors){
+            throw new Error('User login failed')
+          }
+          // eslint-disable-next-line no-console
+          console.log(resData)
+      })
+      .catch(err => {
+        // eslint-disable-next-line no-console
+        console.log(err);
+     
+        })
+     },
+   }  
     
  }
 

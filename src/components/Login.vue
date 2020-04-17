@@ -1,34 +1,19 @@
 <template>
 <div>
-
-    <template v-slot="{ result: { loading, error, data } }">
-      <!-- Loading -->
-      <div v-if="loading" class="loading apollo">Loading...</div>
-
-      <!-- Error -->
-      <div v-else-if="error" class="error apollo">An error occured</div>
-
-      <!-- Result -->
-      <div v-else-if="data" class="result apollo">
-        <section >
   <v-row justify="end" >
-  
     <v-dialog v-model="dialog" persistent max-width="80%" overlay-opacity=".85" >
-      <template v-slot:activator="{ on }" >
-        
+      <template v-slot:activator="{ on }" >     
         <v-btn  color="#1b74bcff"  dark rounded v-on="on" >Login</v-btn>
-  
       </template>
  
     <div class="layoutDialog">
       <v-card class="layoutCard">
-       <v-btn color="#6d6e71"   text @click="dialog = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>
-          
+       <v-btn color="#6d6e71"   text @click="dialog = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>       
         <div class="layout">
-        <v-img
+          <v-img
           class="logo"
           src="/assets/images/FLC-Logo-Large-2b.png"
-        ></v-img>
+          ></v-img>
         </div>
      
         <v-card-text>
@@ -95,8 +80,7 @@
               </v-card-text>
          
           </v-card>
-        </v-dialog> -->
-                
+        </v-dialog> -->          
             </v-row>
           </v-container>
         </v-card-text>
@@ -106,20 +90,11 @@
           class="image"
           src="/assets/images/loginWriting.jpg"
           gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)"
-        ></v-img>
-       
+        ></v-img>    
     </div>
     </v-dialog>
   </v-row>
-  </section>
-  
-      </div>
-
-    </template>
-
- 
 </div>
-
 </template>
 
 
@@ -171,7 +146,7 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
        User: '',
    },
 
-/*  methods:{
+ methods:{
      login(email, password){
        // eslint-disable-next-line no-console
        console.log("logIn function")
@@ -214,7 +189,7 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
      
         })
      },
-   }  */
+   }  
   }
 </script>
 
