@@ -105,12 +105,13 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
   export default {
 
     data: () => ({
+      token: 'H>e5esJUy1sBXPaw',
+      isAuth: true,
       show1: '',
       show: '',
       dialog: false,
       dialog2: false,
       dialog3: false,
-      token: "",
       email: '',
       emailRules: [
         v => !!v || 'E-mail is required',
@@ -130,7 +131,6 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
       formData: '',
-      isAuth: false,
       authLoading: false,
    
     }),
@@ -147,24 +147,24 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
    },
 
  methods:{
-     login(email, password){
+     login(){
        // eslint-disable-next-line no-console
        console.log("logIn function")
        const graphqlQuery = {
          query: `
-         query login {
-            login(email: "${email}", password: "${password}") {
-              token
-              userId
-            }
-          }
+        query login {
+          login(email: "ql@test.com", password: "bibibiibib") {
+          userId
+  }
+}
          `,
        
        }
         fetch('http://localhost:8000/graphql', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+
           },
           body: JSON.stringify(graphqlQuery)
         })   

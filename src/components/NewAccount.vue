@@ -62,7 +62,8 @@
                   counter
                   @click:append="show1 = !show1"
                 ></v-text-field>
-                <v-btn @click="newAccount" color="#a61d36ff"  tile  block :disabled="$v.$invalid" > Get Started</v-btn>
+                <v-btn  color="#a61d36ff"  tile  block @click="newAccount" class="started" type="submit" :disabled="$v.$invalid">Get Started</v-btn>
+
                 <div class="stylingLogin">
                   <h4 class="headline">  Already have an account?   </h4>
                   <app-login class="login"/>
@@ -130,20 +131,18 @@ import login from '../components/Login'
        }
    },
  methods:{
-     newAccount(email, password){
+     newAccount(){
        // eslint-disable-next-line no-console
        console.log("logIn function")
        const graphqlQuery = {
          query: `
-          mutation 
-          createUser(userInput: {email: "${email}", password: "${password}}) {
-            email
-            password
-            _id
-              }
-            {
-              email
-            }
+     mutation creation {
+  createUser(userInput: {email: "front@test2.com", password: "bibibiibib"}) {
+    email
+    password
+    _id
+  }
+}
          `
        }
          fetch('http://localhost:8000/graphql', {
