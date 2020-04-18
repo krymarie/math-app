@@ -90,6 +90,7 @@ import { required, email, } from 'vuelidate/lib/validators'
        },
        User: '',
    },
+   
    methods:{
     logOUT(){
     // eslint-disable-next-line no-console

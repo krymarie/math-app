@@ -44,7 +44,7 @@
                   @click:append="show = !show"
               ></v-text-field>
             
-           <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @submit.prevent="login"  value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
+           <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="login"  value="submit" :disabled="$v.$invalid">Login</v-btn>
                  <!-- <h3 class="headline"> 
                   <v-btn
                   text
@@ -169,6 +169,7 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
           body: JSON.stringify(graphqlQuery)
         })   
         .then(res => {
+           this.$router.push({ path: '/maindashboard'})
           return res.json()
         })
         .then(resData => {

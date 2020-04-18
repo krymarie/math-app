@@ -62,7 +62,7 @@
                   counter
                   @click:append="show1 = !show1"
                 ></v-text-field>
-             <v-btn  color="#a61d36ff"  tile  block @click="dialog = false, newAccount()" class="started" type="submit" :disabled="$v.$invalid" to="/maindashboard">Get Started</v-btn>
+                <v-btn @click="newAccount" color="#a61d36ff"  tile  block :disabled="$v.$invalid" > Get Started</v-btn>
                 <div class="stylingLogin">
                   <h4 class="headline">  Already have an account?   </h4>
                   <app-login class="login"/>
@@ -87,6 +87,7 @@
  
 import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
 import login from '../components/Login'
+/* import axios from 'axios' */
 
   export default {
         components: {
@@ -145,7 +146,7 @@ import login from '../components/Login'
             }
          `
        }
-        fetch('http://localhost:8000/graphql', {
+         fetch('http://localhost:8000/graphql', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -153,7 +154,11 @@ import login from '../components/Login'
           body: JSON.stringify(graphqlQuery)
         })   
         .then(res => {
+          // eslint-disable-next-line no-console
+          console.log('fetch reached')
+          this.$router.push({ path: '/maindashboard'})
           return res.json()
+          
         })
         .then(resData => {
           if (resData.errors && resData.errors[0].status === 422){
@@ -171,11 +176,11 @@ import login from '../components/Login'
         // eslint-disable-next-line no-console
         console.log(err);
      
-        })
+        }) 
      },
    }  
+  }
     
- }
 
 </script>
 
