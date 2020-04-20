@@ -44,7 +44,7 @@
                   @click:append="show = !show"
               ></v-text-field>
             
-           <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="login"  value="submit" :disabled="$v.$invalid">Login</v-btn>
+           <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="login(email,password)"  value="submit" :disabled="$v.$invalid">Login</v-btn>
                  <!-- <h3 class="headline"> 
                   <v-btn
                   text
@@ -147,13 +147,13 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
    },
 
  methods:{
-     login(){
+     login(email, password){
        // eslint-disable-next-line no-console
        console.log("logIn function")
        const graphqlQuery = {
          query: `
         query login {
-          login(email: "ql@test.com", password: "bibibiibib") {
+          login(email: "${email}", password: "${password}") {
           userId
   }
 }

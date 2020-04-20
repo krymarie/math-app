@@ -61,7 +61,7 @@
                                         counter
                                         @click:append="show1 = !show1"
                                 ></v-text-field>
-                                <v-btn  color="#a61d36ff"  tile  block @click="dialog = false, newAccount()" class="started" type="submit" :disabled="$v.$invalid" to="/maindashboard">Get Started</v-btn>
+                                <v-btn  color="#a61d36ff"  tile  block @click="dialog = false, newAccount(email, password)" class="started" type="submit" :disabled="$v.$invalid" to="/maindashboard">Get Started</v-btn>
 
                                 <div class="stylingLogin">
                   <h4 class="headline">  Already have an account?   </h4>
@@ -128,17 +128,54 @@
                 sameAs: sameAs('password')
             }
         },
-        /* methods: {
-          newAccount() {
-            this.$apollo.mutate({
-              // Query
-              mutation: gql`creation ($email: String!,$password: String!) {
-            createUser(userInput: {email: "$email", password: "$password"}) {
-            email
-            password
-            _id
+ methods:{
+     newAccount(email, password){
+       // eslint-disable-next-line no-console
+       console.log("logIn function")
+       const graphqlQuery = {
+         query: `
+     mutation creation {
+  createUser(userInput: {email: "${email}", password: "${password}"}) {
+    email
+    password
+    _id
+  }
+}
+         `
+       }
+         fetch('http://localhost:8000/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(graphqlQuery)
+        })   
+        .then(res => {
+          // eslint-disable-next-line no-console
+          console.log('fetch reached')
+          this.$router.push({ path: '/maindashboard'})
+          return res.json()
+          
+        })
+        .then(resData => {
+          if (resData.errors && resData.errors[0].status === 422){
+            throw new Error(
+              "Validation failed."
+            )        
           }
-              }`, */
+          if (resData.errors){
+            throw new Error('User login failed')
+          }
+          // eslint-disable-next-line no-console
+          console.log(resData)
+      })
+      .catch(err => {
+        // eslint-disable-next-line no-console
+        console.log(err);
+     
+        }) 
+     },
+   }  
 
     }
 

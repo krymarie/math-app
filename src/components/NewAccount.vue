@@ -62,7 +62,7 @@
                   counter
                   @click:append="show1 = !show1"
                 ></v-text-field>
-                <v-btn  color="#a61d36ff"  tile  block @click="newAccount" class="started" type="submit" :disabled="$v.$invalid">Get Started</v-btn>
+                <v-btn  color="#a61d36ff"  tile  block @click="newAccount(email, password)" class="started" type="submit" :disabled="$v.$invalid">Get Started</v-btn>
 
                 <div class="stylingLogin">
                   <h4 class="headline">  Already have an account?   </h4>
@@ -131,13 +131,13 @@ import login from '../components/Login'
        }
    },
  methods:{
-     newAccount(){
+     newAccount(email, password){
        // eslint-disable-next-line no-console
        console.log("logIn function")
        const graphqlQuery = {
          query: `
      mutation creation {
-  createUser(userInput: {email: "front@test2.com", password: "bibibiibib"}) {
+  createUser(userInput: {email: "${email}", password: "${password}"}) {
     email
     password
     _id
