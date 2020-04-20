@@ -1,24 +1,19 @@
 <template>
 <div>
-  <section v-if="Login" >
   <v-row justify="end" >
-  
     <v-dialog v-model="dialog" persistent max-width="80%" overlay-opacity=".85" >
-      <template v-slot:activator="{ on }" >
-        
+      <template v-slot:activator="{ on }" >     
         <v-btn  color="#1b74bcff"  dark rounded v-on="on" >Login</v-btn>
-  
       </template>
  
     <div class="layoutDialog">
       <v-card class="layoutCard">
-       <v-btn color="#6d6e71"   text @click="dialog = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>
-          
+       <v-btn color="#6d6e71"   text @click="dialog = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>       
         <div class="layout">
-        <v-img
+          <v-img
           class="logo"
           src="/assets/images/FLC-Logo-Large-2b.png"
-        ></v-img>
+          ></v-img>
         </div>
      
         <v-card-text>
@@ -49,8 +44,8 @@
                   @click:append="show = !show"
               ></v-text-field>
             
-            <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="Login=false" value="submit" to="/maindashboard" :disabled="$v.$invalid">Login</v-btn>
-                <h3 class="headline"> 
+           <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="login(email,password)"  value="submit" :disabled="$v.$invalid">Login</v-btn>
+                 <!-- <h3 class="headline"> 
                   <v-btn
                   text
                     color="primary"
@@ -81,12 +76,11 @@
                       required
                       type="email"
                     ></v-text-field>
-                     <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit">Recover Password</v-btn>
-                  </v-card-text>
+                     <v-btn  color="#a61d36ff"  tile  block @click="dialog = false" class="started" type="submit">Recover Password</v-btn> 
+              </v-card-text>
          
           </v-card>
-        </v-dialog>
-                
+        </v-dialog> -->          
             </v-row>
           </v-container>
         </v-card-text>
@@ -96,69 +90,11 @@
           class="image"
           src="/assets/images/loginWriting.jpg"
           gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)"
-        ></v-img>
-       
+        ></v-img>    
     </div>
     </v-dialog>
   </v-row>
-  </section>
-   <section v-else >
-        <v-row justify="end" >
-  
-    <v-dialog v-model="dialog3" persistent max-width="80%" overlay-opacity=".85"  >
-      <template v-slot:activator="{ on }" >
-        
-        <v-btn color="#1b74bcff"  dark rounded v-on="on">Log Out</v-btn>
-  
-      </template>
-  
-    <div class="layoutDialog">
-      <v-card class="layoutCard">
-       <v-btn color="#6d6e71"   text @click="dialog = false" class="close"> <v-icon>fas fa-times</v-icon></v-btn>
-          
-        <div class="layout">
-        <v-img
-          class="logo"
-          src="/assets/images/FLC-Logo-Large-2b.png"
-        ></v-img>
-        </div>
-     
-        <v-card-text>
-          <v-container class="containerLayout">
-            <v-row>
-              <v-text-field
-                class="infomation" 
-                @blur="$v.email.$touch()"
-                v-model.lazy="email"
-                :rules="emailRules"
-                label="Email"
-                required
-                type="email"
-                id="email"
-               ></v-text-field>
- 
-            
- <v-btn  color="#1b74bcff"  tile  block class="started" type="submit" @click="Login=true" value="submit" to="/" >Log out</v-btn>
-               
-            
-                
-            </v-row>
-          </v-container>
-        </v-card-text>
-       </v-card> 
-     
-       <v-img
-          class="image"
-          src="/assets/images/loginWriting.jpg"
-          gradient="to top right, rgba(166,29,54,.33), rgba(27,116,188,.7)"
-        ></v-img>
-       
-    </div>
-    </v-dialog>
-  </v-row>
-     </section>
 </div>
-
 </template>
 
 
@@ -169,13 +105,13 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
   export default {
 
     data: () => ({
-      Login: true,
+      token: 'H>e5esJUy1sBXPaw',
+      isAuth: true,
       show1: '',
       show: '',
       dialog: false,
       dialog2: false,
       dialog3: false,
-      token: "",
       email: '',
       emailRules: [
         v => !!v || 'E-mail is required',
@@ -195,6 +131,7 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
       formData: '',
+      authLoading: false,
    
     }),
      validations: {
@@ -208,18 +145,52 @@ import { required, minLength, email, } from 'vuelidate/lib/validators'
        },
        User: '',
    },
-   methods:{
-     logIN: function(){
-       this.Login = true
+
+ methods:{
+     login(email, password){
        // eslint-disable-next-line no-console
-       console.log('set to true')    
+       console.log("logIn function")
+       const graphqlQuery = {
+         query: `
+        query login {
+          login(email: "${email}", password: "${password}") {
+          userId
+  }
+}
+         `,
+       
+       }
+        fetch('http://localhost:8000/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+
+          },
+          body: JSON.stringify(graphqlQuery)
+        })   
+        .then(res => {
+           this.$router.push({ path: '/maindashboard'})
+          return res.json()
+        })
+        .then(resData => {
+          if (resData.errors && resData.errors[0].status === 422){
+            throw new Error(
+              "Validation failed."
+            )        
+          }
+          if (resData.errors){
+            throw new Error('User login failed')
+          }
+          // eslint-disable-next-line no-console
+          console.log(resData)
+      })
+      .catch(err => {
+        // eslint-disable-next-line no-console
+        console.log(err);
+     
+        })
      },
-    logOUT: function(){
-       this.Login = false
-       // eslint-disable-next-line no-console
-       console.log('set to false')
-     }
-   }
+   }  
   }
 </script>
 

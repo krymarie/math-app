@@ -21,7 +21,7 @@
           <v-container>
             <v-row>
               <v-col >
-                <v-text-field label="name*" required></v-text-field>
+                <v-text-field label="name*" v-model="name" required></v-text-field>
               </v-col>
          
     

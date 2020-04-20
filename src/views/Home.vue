@@ -86,7 +86,7 @@
             <h3 class="px-8">Our Goal is to assist students in their learning journey</h3>
             <p class=" paragraph col-10 pa-xs-3" >The FLC Algebra program is designed to be an enjoyable introduction to algebra course to help students learn math. Our program allows parents to track progress and uses graphics to allow students a parents to track progress as they make their way through the program.</p>
             <div class="getStartedBtn">
-              <app-getStarted class="new-account justify-center"></app-getStarted>
+              <app-newAccount class="new-account justify-center"></app-newAccount>
             </div>
           </v-col>
         </v-row>
@@ -165,7 +165,7 @@
   import newAccount from '../components/NewAccount'
   import Header from '../components/Header'
   import Footer from '../components/Foot'
-  import getStarted from '../components/GetStarted'
+/*   import getStarted from '../components/GetStarted' */
 
   export default {
     name: 'App',
@@ -173,7 +173,7 @@
       'app-newAccount' : newAccount,
       'app-header' : Header,
       'app-footer': Footer,
-      'app-getStarted': getStarted
+/*       'app-getStarted': getStarted */
     },
 
     data: () => ({
