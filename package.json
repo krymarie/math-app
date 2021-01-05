@@ -10,7 +10,7 @@
   "dependencies": {
     "@babel/core": "^7.8.7",
     "apollo-boost": "^0.4.7",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-loader": "^8.0.6",
     "core-js": "^2.6.11",
     "graphql": "git://github.com/graphql/graphql-js.git#npm",
